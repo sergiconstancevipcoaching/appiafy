@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, AlertTriangle, TrendingDown, Euro, Clock, Volume2, VolumeX, Zap, Activity, Calendar } from 'lucide-react';
 
 const Hero = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false); // Cambiado a false para audio por defecto
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const toggleMute = () => {
@@ -26,10 +26,20 @@ const Hero = () => {
   useEffect(() => {
     const video = document.getElementById('hero-video') as HTMLVideoElement;
     if (video) {
+      // Configurar audio activado por defecto
+      video.muted = false;
+      setIsMuted(false);
+      
       video.addEventListener('loadeddata', () => {
         setIsVideoLoaded(true);
         video.play().catch((error) => {
           console.log('Autoplay prevented:', error);
+          // Si falla el autoplay con audio, intentar sin audio
+          video.muted = true;
+          setIsMuted(true);
+          video.play().catch((e) => {
+            console.log('Autoplay failed completely:', e);
+          });
         });
       });
 
@@ -37,6 +47,12 @@ const Hero = () => {
         setIsVideoLoaded(true);
         video.play().catch((error) => {
           console.log('Autoplay prevented on canplay:', error);
+          // Si falla el autoplay con audio, intentar sin audio
+          video.muted = true;
+          setIsMuted(true);
+          video.play().catch((e) => {
+            console.log('Autoplay failed completely:', e);
+          });
         });
       });
 
@@ -142,7 +158,7 @@ const Hero = () => {
             <div className="flex justify-center lg:justify-start">
               <div className="inline-flex items-center space-x-2 md:space-x-3 card-danger rounded-full px-4 py-2 md:px-6 md:py-3 animate-urgent text-sm md:text-base">
                 <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-danger-400 animate-pulse-fast" />
-                <span className="text-danger-300 font-bold">🚨 Tu negocio pierde clientes</span>
+                <span className="text-danger-300 font-bold">🚨 Tu empresa pierde dinero AHORA</span>
                 <div className="w-2 h-2 bg-danger-500 rounded-full animate-ping"></div>
               </div>
             </div>
@@ -155,7 +171,7 @@ const Hero = () => {
                 </span>
                 <br />
                 <span className="text-gradient-danger text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                  30.000€ al año
+                  187.200€ al mes
                 </span>
                 <br />
                 <span className="text-gradient-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
@@ -166,7 +182,7 @@ const Hero = () => {
               <div className="card-primary p-4 md:p-6 rounded-2xl">
                 <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed text-center lg:text-left">
                   <strong className="text-white">Mientras lees esto, tu competencia captura clientes con IA 24/7.</strong> 
-                  <span className="text-danger-400 font-bold"> ¿Hasta cuándo vas a permitir que te roben ventas?</span>
+                  <span className="text-danger-400 font-bold"> Cada minuto que esperas = 130€ perdidos para siempre.</span>
                 </p>
               </div>
             </div>
@@ -174,16 +190,16 @@ const Hero = () => {
             {/* Stats de impacto - CENTRADOS para móvil */}
             <div className="grid grid-cols-3 gap-2 md:gap-4 justify-items-center lg:justify-items-start">
               <div className="card-danger p-3 md:p-4 rounded-2xl text-center w-full">
-                <div className="text-2xl md:text-3xl font-black text-danger-400">40%</div>
-                <div className="text-neutral-300 text-xs md:text-sm">Clientes perdidos</div>
+                <div className="text-2xl md:text-3xl font-black text-danger-400">6.240€</div>
+                <div className="text-neutral-300 text-xs md:text-sm">Pérdida diaria</div>
               </div>
               <div className="card-primary p-3 md:p-4 rounded-2xl text-center w-full">
-                <div className="text-2xl md:text-3xl font-black text-primary-400">2.500€</div>
-                <div className="text-neutral-300 text-xs md:text-sm">Pérdida mensual</div>
+                <div className="text-2xl md:text-3xl font-black text-primary-400">130€</div>
+                <div className="text-neutral-300 text-xs md:text-sm">Cada minuto</div>
               </div>
               <div className="card-danger p-3 md:p-4 rounded-2xl text-center w-full">
-                <div className="text-2xl md:text-3xl font-black text-danger-400">24h</div>
-                <div className="text-neutral-300 text-xs md:text-sm">Sin atención</div>
+                <div className="text-2xl md:text-3xl font-black text-danger-400">24/7</div>
+                <div className="text-neutral-300 text-xs md:text-sm">Competencia activa</div>
               </div>
             </div>
 
@@ -193,7 +209,7 @@ const Hero = () => {
                 onClick={scrollToNextSection}
                 className="group w-full md:w-auto inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-lg md:text-xl font-bold text-white btn-danger rounded-2xl shadow-danger transform hover:-translate-y-1 hover:scale-105 transition-all duration-200"
               >
-                <span className="mr-2 md:mr-3">🚨 DETÉN LAS PÉRDIDAS AHORA</span>
+                <span className="mr-2 md:mr-3">🚨 DETÉN LAS PÉRDIDAS INMEDIATAMENTE</span>
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
               
@@ -272,7 +288,7 @@ const Hero = () => {
                       ? 'bg-danger-500/80 text-white' 
                       : 'bg-success-500/80 text-white'
                   }`}>
-                    {isMuted ? '🔇 Sin audio' : '🔊 Con audio'}
+                    {isMuted ? '🔇 Audio desactivado' : '🔊 Audio activado'}
                   </div>
                 </div>
 
@@ -295,7 +311,7 @@ const Hero = () => {
             <h3 className="text-white font-bold text-base mb-2 text-center">
               ⚠️ VE CÓMO TUS COMPETIDORES YA LO USAN
             </h3>
-            <p className="text-danger-200 text-sm text-center">Mientras ves esto, pierdes clientes reales</p>
+            <p className="text-danger-200 text-sm text-center">Mientras ves esto, pierdes 130€ cada minuto</p>
           </div>
         </div>
       </div>

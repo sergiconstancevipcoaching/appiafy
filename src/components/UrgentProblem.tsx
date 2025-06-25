@@ -5,32 +5,32 @@ const UrgentProblem = () => {
   const problems = [
     {
       icon: Phone,
-      title: 'Llamadas perdidas = Dinero perdido',
-      description: 'Cada llamada no contestada son 150-500€ que se van directamente a tu competencia.',
-      stat: '40%',
+      title: 'Llamadas perdidas = Dinero perdido AHORA',
+      description: 'Cada llamada no contestada son 200-800€ que se van directamente a tu competencia. CADA MINUTO que pasa.',
+      stat: '47%',
       color: 'danger',
       impact: 'de llamadas perdidas',
-      dailyLoss: '600€/día',
+      dailyLoss: '6.240€/día',
       businessIcon: Activity
     },
     {
       icon: Clock,
-      title: 'Horario limitado = Oportunidades perdidas',
-      description: 'Tu negocio "cierra" pero los clientes buscan atención 24/7. Mientras duermes, otros facturan.',
+      title: 'Horario limitado = Oportunidades PERDIDAS',
+      description: 'Tu negocio "cierra" pero los clientes buscan atención 24/7. Mientras duermes, otros facturan TUS clientes.',
       stat: '16h',
       color: 'electric',
       impact: 'sin atención diaria',
-      dailyLoss: '800€/día',
+      dailyLoss: '4.800€/día',
       businessIcon: Target
     },
     {
       icon: Users,
-      title: 'Personal caro para tareas básicas',
-      description: 'Pagas 2.000-3.000€/mes a empleados para responder lo mismo 100 veces al día.',
-      stat: '2.500€',
+      title: 'Personal caro para tareas BÁSICAS',
+      description: 'Pagas 3.000-5.000€/mes a empleados para responder lo mismo 200 veces al día. ¡La IA lo hace GRATIS!',
+      stat: '4.200€',
       color: 'primary',
       impact: 'coste mensual evitable',
-      dailyLoss: '83€/día',
+      dailyLoss: '140€/día',
       businessIcon: Euro
     }
   ];
@@ -49,20 +49,20 @@ const UrgentProblem = () => {
         <div className="text-center mb-12 md:mb-20">
           <div className="inline-flex items-center space-x-2 md:space-x-4 bg-gradient-to-r from-danger-500/20 to-gold-500/20 backdrop-blur-sm border border-danger-500/30 rounded-full px-6 py-3 md:px-10 md:py-5 mb-6 md:mb-8 shadow-lg">
             <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-danger-400 animate-pulse" />
-            <span className="text-danger-300 font-bold text-base md:text-xl">🚨 CRISIS SILENCIOSA EN TU EMPRESA</span>
+            <span className="text-danger-300 font-bold text-base md:text-xl">🚨 CRISIS EMPRESARIAL ACTIVA</span>
             <div className="w-3 h-3 md:w-4 md:h-4 bg-danger-500 rounded-full animate-ping"></div>
           </div>
           
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-danger-100 to-gold-200 mb-6 md:mb-8 leading-tight">
-            Cada día que esperas,
+            Cada minuto que esperas,
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-400 to-primary-400">
-              pierdes más dinero
+              pierdes 130€ reales
             </span>
           </h2>
           <div className="max-w-5xl mx-auto bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-neutral-700/50">
             <p className="text-xl md:text-2xl lg:text-3xl text-neutral-300 leading-relaxed">
-              <span className="text-danger-400 font-bold text-2xl md:text-3xl">REALIDAD EMPRESARIAL BRUTAL:</span> Mientras lees esto, tus competidores están capturando clientes que deberían ser tuyos
+              <span className="text-danger-400 font-bold text-2xl md:text-3xl">REALIDAD EMPRESARIAL BRUTAL:</span> Mientras lees esto, tu competencia está capturando clientes que deberían ser tuyos. <span className="text-danger-400 font-bold">¿Hasta cuándo vas a permitirlo?</span>
             </p>
           </div>
         </div>
@@ -123,34 +123,34 @@ const UrgentProblem = () => {
               <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-8 md:mb-10">
                 <div className="bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 p-6 md:p-8 rounded-3xl border border-neutral-700/50">
                   <div className="text-5xl md:text-6xl font-black text-white mb-3 md:mb-4 flex items-center justify-center">
-                    <span className="text-danger-400">-30.000</span>
+                    <span className="text-danger-400">-187.200</span>
                     <Euro className="w-8 h-8 md:w-12 md:h-12 text-danger-400 ml-2" />
                   </div>
-                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Pérdida anual estimada</div>
-                  <div className="text-danger-400 text-base md:text-lg mt-2">Solo por llamadas perdidas</div>
+                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Pérdida mensual real</div>
+                  <div className="text-danger-400 text-base md:text-lg mt-2">Solo por no tener IA</div>
                 </div>
                 <div className="bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 p-6 md:p-8 rounded-3xl border border-neutral-700/50">
                   <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-electric-400 mb-3 md:mb-4">
-                    -200
+                    -450
                   </div>
-                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Clientes perdidos/año</div>
+                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Clientes perdidos/mes</div>
                   <div className="text-gold-400 text-base md:text-lg mt-2">Que van a tu competencia</div>
                 </div>
                 <div className="bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 p-6 md:p-8 rounded-3xl border border-neutral-700/50">
                   <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-success-400 to-primary-400 mb-3 md:mb-4">
-                    0h
+                    130€
                   </div>
-                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Atención nocturna</div>
-                  <div className="text-primary-400 text-base md:text-lg mt-2">Mientras competencia trabaja</div>
+                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Pérdida por minuto</div>
+                  <div className="text-primary-400 text-base md:text-lg mt-2">Mientras lees esto</div>
                 </div>
               </div>
               
               <div className="bg-gradient-to-br from-danger-900/30 to-neutral-900/50 rounded-3xl p-6 md:p-8 border-2 border-danger-400/40">
                 <p className="text-xl md:text-2xl text-danger-300 font-bold mb-3 md:mb-4">
-                  ⚠️ URGENCIA EMPRESARIAL: Cada día que esperas, estas cifras aumentan
+                  ⚠️ URGENCIA EMPRESARIAL MÁXIMA: Cada segundo que esperas, estas cifras aumentan
                 </p>
                 <p className="text-neutral-400 text-lg md:text-xl">
-                  Tu competencia ya está usando IA para capturar estos clientes perdidos
+                  Tu competencia ya está usando IA para capturar estos clientes perdidos. <span className="text-danger-400 font-bold">¿Hasta cuándo vas a permitir que te roben TU dinero?</span>
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Calendar, ArrowRight, Phone, Mail, Target, TrendingUp, Euro, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Calendar, ArrowRight, Phone, Mail, Target, TrendingUp, Euro, Clock, CheckCircle, AlertTriangle, Activity, BarChart3, Users, Shield } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -27,6 +27,8 @@ const ChatBot = () => {
   const [conversationStage, setConversationStage] = useState('initial');
   const [urgencyLevel, setUrgencyLevel] = useState(0);
   const [leadScore, setLeadScore] = useState(0);
+  const [userInterests, setUserInterests] = useState<string[]>([]);
+  const [hasShownWelcome, setHasShownWelcome] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -37,16 +39,29 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Mostrar mensaje de bienvenida inmediatamente al cargar la página
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
+    if (!hasShownWelcome) {
       setTimeout(() => {
         addBotMessage(
-          "🚀 **¡ALERTA EMPRESARIAL!** Soy Carlos, especialista en automatización de IAFY.\n\n**DATO CRÍTICO:** Tu empresa está perdiendo **83€ CADA DÍA** por no tener IA.\n\n**¿Cuál es tu nombre?** Necesito cualificarte para la demo URGENTE.",
-          ["Mi nombre es...", "¿Cómo pierdo 83€/día?", "Quiero la demo YA", "¿Qué es IAFY?"]
+          "🚀 **¡ALERTA EMPRESARIAL CRÍTICA!** \n\nSoy Carlos Mendoza, el especialista #1 en automatización empresarial de España. \n\n**DIAGNÓSTICO INMEDIATO:** Tu empresa está perdiendo **2.847€ CADA SEMANA** por no tener IA trabajando 24/7.\n\n**DATOS REALES:**\n💸 40% de llamadas perdidas = 1.200€/semana\n💸 Clientes nocturnos perdidos = 800€/semana  \n💸 Personal administrativo innecesario = 847€/semana\n\n**¿Cuál es tu nombre?** Necesito cualificarte para la **DEMO URGENTE** que va a transformar tu negocio.",
+          ["Mi nombre es...", "¿Cómo pierdes tanto dinero?", "Quiero la demo YA", "¿Qué es IAFY exactamente?", "Casos de éxito reales"]
+        );
+        setHasShownWelcome(true);
+      }, 2000);
+    }
+  }, [hasShownWelcome]);
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0 && hasShownWelcome) {
+      setTimeout(() => {
+        addBotMessage(
+          "🔥 **¡PERFECTO! Veo que estás listo para actuar.**\n\nComo especialista en ventas con +15 años automatizando empresas, te garantizo que en los próximos 5 minutos vas a descubrir:\n\n✅ **Exactamente cuánto dinero pierdes** cada día\n✅ **Cómo recuperar esas pérdidas** en 7 días\n✅ **El plan específico** para tu empresa\n✅ **Garantía total** de resultados\n\n**¿Cuál es tu nombre?** Voy a hacer un análisis personalizado de tu situación.",
+          ["Mi nombre es...", "Analiza mi empresa", "¿Cuánto cuesta?", "Casos de éxito", "Garantías reales"]
         );
       }, 500);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length, hasShownWelcome]);
 
   const addBotMessage = (text: string, quickReplies?: string[], actions?: Message['actions']) => {
     const newMessage: Message = {
@@ -74,7 +89,7 @@ const ChatBot = () => {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
-    }, 800 + Math.random() * 600);
+    }, 1200 + Math.random() * 800);
   };
 
   const scrollToCalendly = () => {
@@ -96,7 +111,7 @@ const ChatBot = () => {
 
   const openWhatsApp = (customMessage?: string) => {
     const defaultMessage = customMessage || 
-      `🚨 URGENTE - Demo IAFY\n\nHola Carlos, soy ${userName || 'un empresario'} ${userCompany ? `de ${userCompany}` : ''}.\n\n✅ CONFIRMADO: Mi empresa pierde 30.000€/año sin IA\n✅ NECESITO: Demo personalizada INMEDIATA\n✅ OBJETIVO: Implementar en 7 días\n\n¿Cuándo podemos hacer la demo? Quiero empezar YA.`;
+      `🚨 URGENTE - Demo IAFY\n\nHola Carlos, soy ${userName || 'un empresario'} ${userCompany ? `de ${userCompany}` : ''}.\n\n✅ CONFIRMADO: Mi empresa pierde dinero cada día sin IA\n✅ NECESITO: Demo personalizada INMEDIATA\n✅ OBJETIVO: Implementar automatización en 7 días\n\n¿Cuándo podemos hacer la demo? Quiero empezar YA.`;
     
     const encodedMessage = encodeURIComponent(defaultMessage);
     const whatsappUrl = `https://wa.me/34621482256?text=${encodedMessage}`;
@@ -111,9 +126,9 @@ const ChatBot = () => {
   const calculateLeadScore = (message: string): number => {
     let score = leadScore;
     
-    // Palabras que aumentan el score
-    const positiveWords = ['urgente', 'necesito', 'quiero', 'cuando', 'precio', 'demo', 'implementar', 'empresa', 'negocio', 'clientes', 'ventas', 'automatizar'];
-    const urgentWords = ['ya', 'ahora', 'inmediato', 'rapido', 'hoy', 'urgente'];
+    const positiveWords = ['urgente', 'necesito', 'quiero', 'cuando', 'precio', 'demo', 'implementar', 'empresa', 'negocio', 'clientes', 'ventas', 'automatizar', 'ahora', 'ya'];
+    const urgentWords = ['ya', 'ahora', 'inmediato', 'rapido', 'hoy', 'urgente', 'crisis', 'perdiendo'];
+    const businessWords = ['empresa', 'negocio', 'clientes', 'ventas', 'facturación', 'empleados', 'costes'];
     
     positiveWords.forEach(word => {
       if (message.toLowerCase().includes(word)) score += 10;
@@ -121,9 +136,13 @@ const ChatBot = () => {
     
     urgentWords.forEach(word => {
       if (message.toLowerCase().includes(word)) {
-        score += 20;
+        score += 25;
         setUrgencyLevel(prev => prev + 1);
       }
+    });
+
+    businessWords.forEach(word => {
+      if (message.toLowerCase().includes(word)) score += 15;
     });
     
     setLeadScore(Math.min(score, 100));
@@ -134,256 +153,193 @@ const ChatBot = () => {
     const message = userMessage.toLowerCase();
     const score = calculateLeadScore(userMessage);
 
-    // ETAPA 1: CUALIFICACIÓN INICIAL AGRESIVA
-    if (conversationStage === 'initial') {
-      // Capturar nombre
-      if (message.includes('mi nombre es') || message.includes('soy') || message.includes('me llamo')) {
-        const nameMatch = userMessage.match(/(?:mi nombre es|soy|me llamo)\s+([a-záéíóúñ\s]+)/i);
-        if (nameMatch) {
-          setUserName(nameMatch[1].trim());
-          setConversationStage('qualifying');
-          return {
-            text: `Perfecto ${nameMatch[1].trim()}! 🎯\n\n**ANÁLISIS INMEDIATO:** Como especialista en ventas, veo que tu empresa está en **CRISIS SILENCIOSA**.\n\n**REALIDAD BRUTAL:**\n💸 Pierdes 83€ CADA DÍA\n💸 2.500€ CADA MES\n💸 30.000€ CADA AÑO\n\n**¿Cuál es tu empresa?** Necesito calcular tu pérdida EXACTA.`,
-            quickReplies: ["Mi empresa es...", "¿Cómo calculas eso?", "Quiero la demo YA", "Trabajo por cuenta propia"]
-          };
-        }
-      }
-
-      // Respuesta sobre pérdidas
-      if (message.includes('cómo pierdo') || message.includes('83€') || message.includes('calculas')) {
+    // RESPUESTAS ESPECÍFICAS PARA CADA OPCIÓN RÁPIDA
+    
+    // RESPUESTA: "Mi nombre es..."
+    if (message.includes('mi nombre es') || message.includes('soy') || message.includes('me llamo')) {
+      const nameMatch = userMessage.match(/(?:mi nombre es|soy|me llamo)\s+([a-záéíóúñ\s]+)/i);
+      if (nameMatch) {
+        setUserName(nameMatch[1].trim());
         setConversationStage('qualifying');
         return {
-          text: `**🚨 CÁLCULO REAL DE PÉRDIDAS:**\n\n**CADA DÍA que no tienes IA:**\n💸 40% de llamadas perdidas = 150€\n💸 Clientes que van a competencia = 200€\n💸 Tiempo perdido en tareas manuales = 120€\n💸 Oportunidades nocturnas perdidas = 180€\n\n**TOTAL DIARIO: 650€**\n**TOTAL ANUAL: 237.250€**\n\n**¿Cuál es tu nombre?** Voy a calcular TU pérdida específica.`,
-          quickReplies: ["Mi nombre es...", "¡Esto es urgente!", "Quiero parar las pérdidas", "¿Cómo lo solucionáis?"]
+          text: `¡Excelente ${nameMatch[1].trim()}! 🎯\n\n**ANÁLISIS INMEDIATO DE TU SITUACIÓN:**\n\nComo especialista que ha automatizado +50 empresas, veo que tu negocio está en **MODO SUPERVIVENCIA** en lugar de **MODO CRECIMIENTO**.\n\n**DIAGNÓSTICO PROFESIONAL:**\n📊 **Pérdida estimada:** 2.847€/semana\n📊 **Eficiencia actual:** 35% (debería ser 95%)\n📊 **Competencia ganando:** Mientras duermes\n📊 **Potencial de crecimiento:** +180% con IA\n\n**PREGUNTA CLAVE:** ¿Cuál es tu empresa, ${nameMatch[1].trim()}? Necesito hacer un cálculo exacto de tus pérdidas específicas.`,
+          quickReplies: ["Mi empresa es...", "¿Cómo calculas las pérdidas?", "Quiero ver casos similares", "Demo personalizada YA", "¿Qué garantías ofreces?"]
         };
       }
+    }
 
-      // Quiere demo inmediata
-      if (message.includes('demo ya') || message.includes('quiero ya') || message.includes('urgente')) {
-        setUrgencyLevel(prev => prev + 2);
-        setConversationStage('closing');
-        return {
-          text: `**🔥 PERFECTO! Detecto URGENCIA MÁXIMA.**\n\n**ACCIÓN INMEDIATA:**\n✅ Demo personalizada en 30 min\n✅ Cálculo de ROI específico\n✅ Plan de implementación en 7 días\n✅ Garantía de resultados\n\n**¿Prefieres que te llame AHORA o agendamos?**`,
-          actions: [
-            {
-              type: 'whatsapp',
-              text: '📞 LLAMARME AHORA (INMEDIATO)',
-              message: `🚨 URGENTE - Llamada Inmediata\n\nHola Carlos, NECESITO que me llames AHORA.\n\nDetectaste urgencia máxima y tienes razón. Mi empresa está perdiendo dinero cada minuto.\n\n¿Puedes llamarme en los próximos 5 minutos?\n\nMi teléfono: [AÑADIR TELÉFONO]`
-            },
-            {
-              type: 'calendly',
-              text: '📅 AGENDAR DEMO (30 MIN)',
-            }
-          ],
-          quickReplies: ["¿Cuánto cuesta?", "¿Garantías reales?", "Empezar implementación"]
-        };
-      }
-
-      // Qué es IAFY
-      if (message.includes('qué es') || message.includes('iafy')) {
-        return {
-          text: `**IAFY = SOLUCIÓN #1 EN ESPAÑA** 🇪🇸\n\n**RESULTADOS GARANTIZADOS:**\n🚀 Capturas 100% de leads (24/7)\n🚀 Reduces costes 70%\n🚀 Aumentas ventas 180%\n🚀 ROI del 320% en 30 días\n\n**+20 empresas** ya facturan más con nosotros.\n\n**¿Cuál es tu nombre?** Te muestro casos específicos de tu sector.`,
-          quickReplies: ["Mi nombre es...", "Casos de mi sector", "¿Cuánto cuesta?", "Demo personalizada"]
-        };
-      }
-
-      // Default para inicial
+    // RESPUESTA: "¿Cómo pierdes tanto dinero?" / "¿Cómo calculas las pérdidas?"
+    if (message.includes('cómo pierdes') || message.includes('tanto dinero') || message.includes('cómo calculas') || message.includes('pérdidas')) {
+      setConversationStage('educating');
       return {
-        text: `**⚠️ CADA SEGUNDO CUENTA.**\n\nMientras hablamos, tu competencia está capturando clientes con IA 24/7.\n\n**PREGUNTA DIRECTA:** ¿Cuántas llamadas pierde tu empresa cada día?\n\n**¿Cuál es tu nombre?** Necesito cualificarte para la demo URGENTE.`,
-        quickReplies: ["Mi nombre es...", "Perdemos muchas llamadas", "¿Cómo funciona?", "Quiero demo YA"]
+        text: `📊 **METODOLOGÍA CIENTÍFICA DE CÁLCULO DE PÉRDIDAS**\n\n**FÓRMULA PROBADA** (aplicada en +50 empresas):\n\n**1. LLAMADAS PERDIDAS (40% promedio)**\n💸 150 llamadas/mes × 40% perdidas = 60 oportunidades\n💸 60 oportunidades × 150€ valor promedio = **9.000€/mes**\n\n**2. HORARIO LIMITADO (16h sin atención)**\n💸 Clientes nocturnos/fines de semana = **3.200€/mes**\n💸 Competencia capturando TUS clientes = **2.100€/mes**\n\n**3. PERSONAL ADMINISTRATIVO INNECESARIO**\n💸 Recepcionista: 1.800€/mes\n💸 Coordinador: 2.200€/mes\n💸 Tareas que IA hace gratis: **4.000€/mes**\n\n**TOTAL PÉRDIDA MENSUAL: 18.300€**\n**PÉRDIDA ANUAL: 219.600€**\n\n**¿Quieres que calculemos TU pérdida exacta?**`,
+        quickReplies: ["Sí, mi pérdida exacta", "¿Cómo lo solucionáis?", "Casos de empresas similares", "Demo con cálculos reales", "Implementar YA"]
       };
     }
 
-    // ETAPA 2: CUALIFICACIÓN AGRESIVA
-    if (conversationStage === 'qualifying') {
-      // Capturar empresa
-      if (message.includes('mi empresa es') || message.includes('trabajo en')) {
-        const companyMatch = userMessage.match(/(?:mi empresa es|trabajo en)\s+([a-záéíóúñ\s]+)/i);
-        if (companyMatch) {
-          setUserCompany(companyMatch[1].trim());
-        }
-        setConversationStage('presenting');
-        return {
-          text: `**ANÁLISIS EMPRESARIAL INMEDIATO** 📊\n\n${companyMatch ? `${companyMatch[1].trim()} - ` : ''}**DIAGNÓSTICO:**\n\n💸 **PÉRDIDA ESTIMADA:** 2.500€/mes\n💸 **CLIENTES PERDIDOS:** 40% diarios\n💸 **COMPETENCIA GANANDO:** Mientras duermes\n\n**SOLUCIÓN IAFY:**\n✅ +180% conversiones\n✅ -70% costes\n✅ 24/7 automatización\n\n**¿Quieres ver exactamente cómo lo haríamos en tu empresa?**`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '🎯 SÍ, DEMO PERSONALIZADA',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 HABLAR AHORA MISMO',
-              message: `Hola Carlos, soy ${userName} de ${companyMatch?.[1] || 'mi empresa'}.\n\nHe visto el análisis y es exacto. Estamos perdiendo 2.500€/mes.\n\nNECESITO una demo personalizada URGENTE.\n\n¿Cuándo podemos hacerla?`
-            }
-          ],
-          quickReplies: ["¿Cuánto cuesta?", "Casos de éxito", "¿Garantías?", "Implementar YA"]
-        };
-      }
-
-      // Trabajo por cuenta propia
-      if (message.includes('cuenta propia') || message.includes('autónomo') || message.includes('freelance')) {
-        setUserCompany('Autónomo');
-        setConversationStage('presenting');
-        return {
-          text: `**PERFECTO PARA AUTÓNOMOS** 💼\n\n**TU SITUACIÓN:**\n💸 Pierdes clientes por no contestar 24/7\n💸 No puedes crecer sin más personal\n💸 Competencia con equipos grandes te gana\n\n**SOLUCIÓN IAFY:**\n🚀 Eres una empresa de 10 personas\n🚀 Atiendes 24/7 sin dormir\n🚀 Compites con las grandes\n\n**ROI AUTÓNOMOS:** 450% promedio\n\n**¿Quieres ver cómo multiplicar tu facturación?**`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '🚀 DEMO PARA AUTÓNOMOS',
-            },
-            {
-              type: 'whatsapp',
-              text: '💬 HABLAR CON ESPECIALISTA',
-              message: `Hola Carlos, soy ${userName}, autónomo.\n\nQuiero multiplicar mi facturación con IA como me has explicado.\n\n¿Podemos hacer una demo específica para autónomos?`
-            }
-          ],
-          quickReplies: ["¿Precio para autónomos?", "Casos autónomos", "Empezar YA"]
-        };
-      }
-
-      // Cómo calculas
-      if (message.includes('cómo calculas') || message.includes('cómo lo sabes')) {
-        return {
-          text: `**METODOLOGÍA CIENTÍFICA** 🔬\n\n**DATOS REALES de +20 empresas:**\n📊 40% llamadas perdidas (promedio)\n📊 150€ valor promedio por lead\n📊 2.500€ coste personal administrativo\n📊 16h sin atención = oportunidades perdidas\n\n**FÓRMULA:**\n(Llamadas perdidas × Valor lead) + Costes personal + Oportunidades nocturnas = **PÉRDIDA REAL**\n\n**¿Quieres que calculemos TU pérdida exacta?**`,
-          quickReplies: ["Sí, mi pérdida exacta", "¿Cómo lo solucionáis?", "Demo personalizada", "Casos de éxito"]
-        };
-      }
-    }
-
-    // ETAPA 3: PRESENTACIÓN AGRESIVA
-    if (conversationStage === 'presenting') {
-      // Precio
-      if (message.includes('cuánto cuesta') || message.includes('precio') || message.includes('coste')) {
-        setConversationStage('closing');
-        return {
-          text: `**💰 INVERSIÓN vs RETORNO:**\n\n**IAFY Professional:** 497€/mes\n**TU RETORNO:** 2.500€+/mes\n**BENEFICIO NETO:** +2.003€/mes\n**ROI:** 403% mensual\n\n**GARANTÍA TOTAL:**\n✅ 30 días prueba gratis\n✅ Si no recuperas inversión → DINERO DEVUELTO\n✅ Sin permanencia\n\n**PREGUNTA CLAVE:** ¿Cuándo quieres empezar a ganar 2.000€ extra cada mes?`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '💰 EMPEZAR A GANAR YA',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 CERRAR AHORA',
-              message: `Hola Carlos, he visto los números:\n\n✅ Inversión: 497€/mes\n✅ Retorno: 2.500€+/mes\n✅ Beneficio: +2.003€/mes\n\nQuiero empezar YA. ¿Podemos cerrar ahora mismo?`
-            }
-          ],
-          quickReplies: ["¿Garantía real?", "Casos de éxito", "Empezar implementación"]
-        };
-      }
-
-      // Casos de éxito
-      if (message.includes('casos') || message.includes('éxito') || message.includes('ejemplos')) {
-        return {
-          text: `**🏆 CASOS REALES VERIFICADOS:**\n\n**TechSolutions Madrid:**\n💰 +4.200€/mes ahorrados\n📈 +180% conversiones\n⏱️ ROI: 420%\n\n**InnovaMarketing BCN:**\n💰 +2.800€/mes ahorrados\n📈 +95% satisfacción\n⏱️ ROI: 280%\n\n**GlobalTrade Valencia:**\n💰 +5.100€/mes ahorrados\n📈 +300% clientes internacionales\n⏱️ ROI: 450%\n\n**¿Quieres ser nuestro próximo caso de éxito?**`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '🏆 SER EL PRÓXIMO CASO',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 HABLAR CON CLIENTES',
-              message: `Hola Carlos, he visto los casos de éxito.\n\n¿Puedo hablar con algún cliente para verificar los resultados?\n\nQuiero resultados similares para mi empresa.`
-            }
-          ],
-          quickReplies: ["¿Cómo lo hacéis?", "¿Cuánto tarda?", "Empezar YA"]
-        };
-      }
-
-      // Cómo funciona
-      if (message.includes('cómo funciona') || message.includes('cómo lo hacéis')) {
-        return {
-          text: `**🔧 PROCESO CIENTÍFICO:**\n\n**FASE 1 (Días 1-2):** Análisis + Setup\n**FASE 2 (Días 3-5):** IA entrenada con TU info\n**FASE 3 (Días 6-7):** ¡FUNCIONANDO 24/7!\n\n**TECNOLOGÍA:**\n🤖 GPT-4 (misma que ChatGPT)\n🔒 Servidores AWS Europa\n📱 WhatsApp API oficial\n☁️ Integración total con tu CRM\n\n**TÚ NO HACES NADA.** Nosotros lo hacemos todo.\n\n**¿Empezamos esta semana?**`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '🚀 EMPEZAR ESTA SEMANA',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 IMPLEMENTACIÓN URGENTE',
-              message: `Hola Carlos, quiero empezar la implementación ESTA SEMANA.\n\n¿Podemos acelerar el proceso? Mi empresa necesita esto YA.`
-            }
-          ],
-          quickReplies: ["¿Qué necesitáis?", "¿Interrumpe mi negocio?", "Empezar YA"]
-        };
-      }
-    }
-
-    // ETAPA 4: CIERRE AGRESIVO
-    if (conversationStage === 'closing') {
-      // Garantía
-      if (message.includes('garantía') || message.includes('real') || message.includes('seguro')) {
-        return {
-          text: `**🛡️ GARANTÍAS BLINDADAS:**\n\n✅ **30 días GRATIS** → Si no funciona, DINERO DEVUELTO\n✅ **Resultados en 7 días** → O trabajamos GRATIS\n✅ **Sin permanencia** → Cancelas cuando quieras\n✅ **Soporte 24/7** → Nunca estás solo\n\n**+20 EMPRESAS** confían en nosotros.\n**95% SATISFACCIÓN** verificada.\n\n**ÚLTIMA PREGUNTA:** ¿Prefieres demo ahora o que te llame directamente?`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '📅 DEMO AHORA',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 LLAMARME YA',
-              message: `Hola Carlos, he visto todas las garantías.\n\nEstoy convencido. ¿Puedes llamarme AHORA para cerrar?\n\nMi teléfono: [AÑADIR NÚMERO]`
-            }
-          ]
-        };
-      }
-
-      // Empezar implementación
-      if (message.includes('empezar') || message.includes('implementar') || message.includes('ya')) {
-        return {
-          text: `**🚀 ¡PERFECTO! CERRAMOS AHORA.**\n\n**PRÓXIMOS PASOS INMEDIATOS:**\n1️⃣ Demo personalizada (30 min)\n2️⃣ Análisis de tu empresa específica\n3️⃣ Cálculo de ROI exacto\n4️⃣ Implementación en 7 días\n5️⃣ ¡Empiezas a ganar dinero!\n\n**¿Cómo prefieres cerrar?**`,
-          actions: [
-            {
-              type: 'calendly',
-              text: '📅 DEMO + CIERRE (30 MIN)',
-            },
-            {
-              type: 'whatsapp',
-              text: '📞 CERRAR POR TELÉFONO',
-              message: `Hola Carlos, estoy listo para CERRAR.\n\nQuiero implementar IAFY en mi empresa YA.\n\n¿Podemos cerrar por teléfono ahora mismo?\n\nMi teléfono: [AÑADIR NÚMERO]`
-            }
-          ]
-        };
-      }
-    }
-
-    // RESPUESTAS GENERALES ULTRA-AGRESIVAS
-    if (message.includes('demo') || message.includes('ver') || message.includes('mostrar')) {
+    // RESPUESTA: "Quiero la demo YA" / "Demo personalizada YA"
+    if (message.includes('demo ya') || message.includes('demo personalizada') || message.includes('quiero ya') || message.includes('urgente')) {
+      setUrgencyLevel(prev => prev + 3);
+      setConversationStage('closing');
       return {
-        text: `**🎯 DEMO PERSONALIZADA = CIERRE INMEDIATO**\n\nEn **30 minutos** verás:\n💰 **Cuánto dinero pierdes EXACTAMENTE**\n💰 **Cuánto ganarías con IAFY (números reales)**\n💰 **Plan de implementación específico**\n💰 **ROI garantizado para TU empresa**\n\n**¿Prefieres que te llame AHORA o agendamos?**`,
+        text: `🔥 **¡PERFECTO! DETECTO URGENCIA MÁXIMA.**\n\n**DEMO PERSONALIZADA INMEDIATA** - Lo que verás:\n\n**MINUTO 1-5:** Análisis de tu empresa específica\n📊 Cálculo exacto de pérdidas actuales\n📊 Potencial de crecimiento con IA\n\n**MINUTO 6-15:** IA funcionando EN VIVO\n🤖 Conversaciones reales con clientes\n🤖 Agenda automática en acción\n🤖 Integración con tu CRM\n\n**MINUTO 16-25:** Plan de implementación\n⚡ Cronograma de 7 días\n⚡ ROI garantizado específico\n⚡ Inversión vs retorno\n\n**MINUTO 26-30:** Cierre y próximos pasos\n✅ Contrato si decides continuar\n✅ Inicio inmediato\n\n**¿Prefieres que te llame AHORA o agendamos para hoy?**`,
         actions: [
           {
             type: 'whatsapp',
             text: '📞 LLAMARME AHORA (INMEDIATO)',
-            message: `Hola Carlos, quiero la demo personalizada.\n\n¿Puedes llamarme AHORA? Estoy listo para ver los números y cerrar si me convence.\n\nMi teléfono: [AÑADIR NÚMERO]`
+            message: `🚨 URGENTE - Llamada Inmediata\n\nHola Carlos, NECESITO que me llames AHORA.\n\nDetectaste urgencia máxima y tienes razón. Mi empresa está perdiendo dinero cada minuto.\n\n¿Puedes llamarme en los próximos 5 minutos?\n\nMi teléfono: [AÑADIR TELÉFONO]\nMi empresa: [AÑADIR EMPRESA]`
           },
           {
             type: 'calendly',
-            text: '📅 AGENDAR DEMO (30 MIN)',
+            text: '📅 AGENDAR PARA HOY',
           }
         ],
-        quickReplies: ["¿Qué veré exactamente?", "¿Es realmente gratis?", "Cerrar ahora"]
+        quickReplies: ["¿Cuánto cuesta exactamente?", "Garantías de resultados", "Casos de éxito similares"]
       };
     }
 
-    // Respuesta por defecto - MÁXIMA AGRESIVIDAD
+    // RESPUESTA: "¿Qué es IAFY exactamente?"
+    if (message.includes('qué es iafy') || message.includes('iafy exactamente') || message.includes('qué es')) {
+      return {
+        text: `🚀 **IAFY = LA REVOLUCIÓN EMPRESARIAL #1 EN ESPAÑA**\n\n**QUÉ SOMOS:**\nLa plataforma de automatización empresarial más avanzada de Europa. Convertimos tu empresa en una máquina de ventas 24/7.\n\n**TECNOLOGÍA EXCLUSIVA:**\n🤖 **GPT-4 Personalizado:** Entrenado específicamente para TU empresa\n🤖 **Voz Humana:** Indistinguible de una persona real\n🤖 **WhatsApp Oficial:** API certificada por Meta\n🤖 **Integración Total:** Con cualquier CRM existente\n\n**RESULTADOS GARANTIZADOS:**\n📈 **+180% conversiones** (promedio clientes)\n📈 **-70% costes** operativos\n📈 **24/7 atención** sin descanso\n📈 **ROI 320%** en 30 días\n\n**DIFERENCIA CLAVE:** No somos un chatbot básico. Somos tu empleado perfecto que nunca duerme, nunca se enferma, nunca pide vacaciones.\n\n**¿Quieres ver exactamente cómo funcionaría en TU empresa?**`,
+        quickReplies: ["Sí, demo para mi empresa", "Casos de mi sector", "¿Cuánto cuesta?", "Garantías reales", "Empezar implementación"]
+      };
+    }
+
+    // RESPUESTA: "Casos de éxito reales" / "Casos de empresas similares"
+    if (message.includes('casos') || message.includes('éxito') || message.includes('ejemplos') || message.includes('similares')) {
+      return {
+        text: `🏆 **CASOS DE ÉXITO VERIFICADOS** (Clientes reales):\n\n**TECHSOLUTIONS MADRID** (Consultoría IT)\n💰 **Antes:** Perdían 4.200€/mes en llamadas\n💰 **Después:** +180% conversiones, +6.300€/mes extra\n💰 **ROI:** 420% en 45 días\n\n**INNOVAMARKETING BCN** (Marketing Digital)\n💰 **Antes:** 3 empleados administrativos (6.600€/mes)\n💰 **Después:** IA hace todo, ahorran 5.200€/mes\n💰 **ROI:** 280% mensual\n\n**GLOBALTRADE VALENCIA** (Comercio Internacional)\n💰 **Antes:** Perdían clientes internacionales (horarios)\n💰 **Después:** +300% clientes, 24/7 multiidioma\n💰 **ROI:** 450% en 60 días\n\n**CLÍNICA DENTAL PREMIUM** (Sector Salud)\n💰 **Antes:** 40% citas perdidas por no contestar\n💰 **Después:** 95% ocupación, +150 pacientes/mes\n💰 **ROI:** 380% mensual\n\n**¿Quieres ser nuestro próximo caso de éxito?**`,
+        actions: [
+          {
+            type: 'whatsapp',
+            text: '📞 HABLAR CON CLIENTES REALES',
+            message: `Hola Carlos, he visto los casos de éxito.\n\n¿Puedo hablar directamente con algún cliente para verificar los resultados?\n\nQuiero resultados similares para mi empresa.\n\nMi sector: [AÑADIR SECTOR]\nMi empresa: [AÑADIR EMPRESA]`
+          },
+          {
+            type: 'calendly',
+            text: '🏆 SER EL PRÓXIMO CASO',
+          }
+        ],
+        quickReplies: ["Demo para mi sector", "¿Cómo lo conseguís?", "Garantías de resultados", "Empezar YA"]
+      };
+    }
+
+    // RESPUESTA: "Mi empresa es..."
+    if (message.includes('mi empresa es') || message.includes('trabajo en') || message.includes('empresa es')) {
+      const companyMatch = userMessage.match(/(?:mi empresa es|trabajo en|empresa es)\s+([a-záéíóúñ\s]+)/i);
+      if (companyMatch) {
+        setUserCompany(companyMatch[1].trim());
+      }
+      setConversationStage('analyzing');
+      return {
+        text: `📊 **ANÁLISIS EMPRESARIAL INMEDIATO**\n\n${companyMatch ? `**${companyMatch[1].trim()}** - ` : ''}**DIAGNÓSTICO PROFESIONAL:**\n\n**SITUACIÓN ACTUAL DETECTADA:**\n💸 **Pérdida estimada:** 15.600€/mes\n💸 **Eficiencia operativa:** 35% (debería ser 95%)\n💸 **Clientes perdidos:** 40% por falta de atención 24/7\n💸 **Competencia ganando:** Mientras tu equipo descansa\n\n**SOLUCIÓN IAFY PERSONALIZADA:**\n✅ **IA entrenada** específicamente para tu sector\n✅ **Automatización total** de consultas repetitivas\n✅ **Captación 24/7** sin intervención humana\n✅ **Integración perfecta** con tus sistemas actuales\n\n**PROYECCIÓN CON IAFY:**\n📈 **+180% conversiones** en 30 días\n📈 **-70% costes** operativos\n📈 **+24/7 disponibilidad** para clientes\n📈 **ROI 320%** garantizado\n\n**¿Quieres ver exactamente cómo funcionaría en tu empresa?**`,
+        actions: [
+          {
+            type: 'calendly',
+            text: '🎯 DEMO PERSONALIZADA PARA MI EMPRESA',
+          },
+          {
+            type: 'whatsapp',
+            text: '📞 ANÁLISIS URGENTE',
+            message: `Hola Carlos, soy ${userName} de ${companyMatch?.[1] || 'mi empresa'}.\n\nHe visto el análisis y es exacto. Estamos perdiendo 15.600€/mes.\n\nNECESITO una demo personalizada URGENTE para mi sector específico.\n\n¿Cuándo podemos hacerla?`
+          }
+        ],
+        quickReplies: ["¿Cuánto cuesta exactamente?", "Casos de mi sector", "Garantías de ROI", "Implementar esta semana"]
+      };
+    }
+
+    // RESPUESTA: "¿Cuánto cuesta?" / "¿Cuánto cuesta exactamente?"
+    if (message.includes('cuánto cuesta') || message.includes('precio') || message.includes('coste') || message.includes('inversión')) {
+      setConversationStage('pricing');
+      return {
+        text: `💰 **INVERSIÓN vs RETORNO GARANTIZADO:**\n\n**IAFY PROFESSIONAL** (Más popular)\n💳 **Inversión:** 497€/mes\n💰 **Tu retorno:** 15.600€+/mes\n💰 **Beneficio neto:** +15.103€/mes\n💰 **ROI:** 3.038% mensual\n\n**COMPARATIVA REAL:**\n❌ **Sin IAFY:** Pierdes 15.600€/mes\n✅ **Con IAFY:** Ganas 15.103€/mes extra\n🔥 **Diferencia:** +30.703€/mes\n\n**GARANTÍAS BLINDADAS:**\n🛡️ **30 días prueba** → Si no funciona, dinero devuelto\n🛡️ **ROI garantizado** → O trabajamos gratis\n🛡️ **Sin permanencia** → Cancelas cuando quieras\n🛡️ **Soporte 24/7** → Nunca estás solo\n\n**PREGUNTA CLAVE:** ¿Prefieres seguir perdiendo 15.600€ cada mes o empezar a ganar 15.103€ extra?\n\n**OFERTA ESPECIAL HOY:** Primera implementación GRATIS (valor 2.500€)`,
+        actions: [
+          {
+            type: 'calendly',
+            text: '💰 EMPEZAR A GANAR 15.103€/MES',
+          },
+          {
+            type: 'whatsapp',
+            text: '📞 CERRAR AHORA CON DESCUENTO',
+            message: `Hola Carlos, he visto los números:\n\n✅ Inversión: 497€/mes\n✅ Retorno: 15.600€+/mes\n✅ Beneficio: +15.103€/mes\n✅ ROI: 3.038%\n\nQuiero la oferta especial de implementación gratis.\n\n¿Podemos cerrar ahora mismo?`
+          }
+        ],
+        quickReplies: ["¿Garantía real?", "Casos con ROI similar", "Empezar implementación", "Oferta especial"]
+      };
+    }
+
+    // RESPUESTA: "¿Garantías reales?" / "Garantías de resultados"
+    if (message.includes('garantía') || message.includes('garantías') || message.includes('seguro') || message.includes('resultados')) {
+      return {
+        text: `🛡️ **GARANTÍAS BLINDADAS VERIFICABLES:**\n\n**1. GARANTÍA DE RESULTADOS (30 DÍAS)**\n✅ Si no recuperas la inversión → **DINERO DEVUELTO 100%**\n✅ Si no aumentan conversiones → **TRABAJAMOS GRATIS**\n✅ Si no reduces costes → **REEMBOLSO INMEDIATO**\n\n**2. GARANTÍA TÉCNICA**\n✅ **99.9% uptime** → Compensación si falla\n✅ **Respuesta <1 segundo** → O mejoramos gratis\n✅ **Integración perfecta** → O desarrollamos gratis\n\n**3. GARANTÍA COMERCIAL**\n✅ **Sin permanencia** → Cancelas cuando quieras\n✅ **Soporte 24/7** → Siempre disponible\n✅ **Actualizaciones gratis** → De por vida\n\n**4. GARANTÍA LEGAL**\n✅ **Contrato blindado** → Protección total\n✅ **GDPR compliant** → Datos seguros\n✅ **Seguro responsabilidad** → 1M€ cobertura\n\n**PRUEBA SOCIAL:** +50 empresas confían en nosotros\n**SATISFACCIÓN:** 98% clientes renovaron\n\n**¿Listo para empezar sin riesgo?**`,
+        actions: [
+          {
+            type: 'calendly',
+            text: '🛡️ EMPEZAR SIN RIESGO',
+          },
+          {
+            type: 'whatsapp',
+            text: '📞 CERRAR CON GARANTÍAS',
+            message: `Hola Carlos, he visto todas las garantías:\n\n✅ 30 días dinero devuelto\n✅ Resultados garantizados\n✅ Sin permanencia\n✅ Soporte 24/7\n\nEstoy convencido. ¿Podemos cerrar con todas las garantías incluidas?`
+          }
+        ],
+        quickReplies: ["Empezar implementación", "Ver contrato", "Casos verificables", "Cerrar YA"]
+      };
+    }
+
+    // RESPUESTA: "Empezar implementación" / "Implementar YA"
+    if (message.includes('empezar') || message.includes('implementar') || message.includes('ya') || message.includes('cerrar')) {
+      return {
+        text: `🚀 **¡PERFECTO! CERRAMOS AHORA MISMO.**\n\n**PROCESO DE IMPLEMENTACIÓN INMEDIATA:**\n\n**HOY (Día 0):**\n✅ Firma de contrato digital\n✅ Acceso inmediato a plataforma\n✅ Análisis técnico de tu empresa\n\n**DÍAS 1-3: CONFIGURACIÓN**\n⚡ Entrenamiento IA con tu información\n⚡ Integración con tus sistemas\n⚡ Configuración de respuestas personalizadas\n\n**DÍAS 4-6: PRUEBAS**\n🧪 Tests con conversaciones reales\n🧪 Ajustes finos de personalidad\n🧪 Validación de integraciones\n\n**DÍA 7: ¡FUNCIONANDO!**\n🎯 Lanzamiento en producción\n🎯 Monitoreo en tiempo real\n🎯 Soporte técnico activo\n\n**BONUS ESPECIAL HOY:**\n🎁 Implementación gratis (valor 2.500€)\n🎁 Primer mes 50% descuento\n🎁 Soporte premium 3 meses gratis\n\n**¿Cómo prefieres cerrar?**`,
+        actions: [
+          {
+            type: 'calendly',
+            text: '📅 DEMO + CIERRE (30 MIN)',
+          },
+          {
+            type: 'whatsapp',
+            text: '📞 CERRAR POR TELÉFONO AHORA',
+            message: `Hola Carlos, estoy listo para CERRAR AHORA MISMO.\n\nQuiero implementar IAFY en mi empresa con todos los bonus:\n✅ Implementación gratis\n✅ Primer mes 50% descuento\n✅ Soporte premium 3 meses\n\n¿Podemos cerrar por teléfono en los próximos 5 minutos?\n\nMi teléfono: [AÑADIR NÚMERO]`
+          }
+        ]
+      };
+    }
+
+    // RESPUESTAS GENERALES ULTRA-AGRESIVAS MEJORADAS
+    if (message.includes('demo') || message.includes('ver') || message.includes('mostrar')) {
+      return {
+        text: `🎯 **DEMO PERSONALIZADA = CIERRE GARANTIZADO**\n\nEn **30 minutos** verás:\n\n**ANÁLISIS REAL DE TU EMPRESA:**\n💰 Cuánto dinero pierdes EXACTAMENTE cada día\n💰 Cuánto ganarías con IAFY (números reales)\n💰 ROI específico para TU sector\n\n**IA FUNCIONANDO EN VIVO:**\n🤖 Conversaciones reales con tus clientes\n🤖 Agenda automática en acción\n🤖 Integración con tu CRM funcionando\n\n**PLAN DE IMPLEMENTACIÓN:**\n⚡ Cronograma específico de 7 días\n⚡ Equipo técnico asignado\n⚡ Garantías contractuales\n\n**CIERRE INMEDIATO:**\n✅ Contrato si decides continuar\n✅ Inicio en 24 horas\n✅ Bonus especiales solo hoy\n\n**¿Prefieres que te llame AHORA o agendamos?**`,
+        actions: [
+          {
+            type: 'whatsapp',
+            text: '📞 LLAMARME AHORA (INMEDIATO)',
+            message: `Hola Carlos, quiero la demo personalizada.\n\n¿Puedes llamarme AHORA? Estoy listo para ver los números reales y cerrar si me convence.\n\nMi teléfono: [AÑADIR NÚMERO]\nMi empresa: [AÑADIR EMPRESA]\nMi sector: [AÑADIR SECTOR]`
+          },
+          {
+            type: 'calendly',
+            text: '📅 AGENDAR DEMO + CIERRE',
+          }
+        ],
+        quickReplies: ["¿Qué veré exactamente?", "¿Es realmente gratis?", "Casos de mi sector", "Cerrar ahora"]
+      };
+    }
+
+    // Respuesta por defecto - MÁXIMA AGRESIVIDAD MEJORADA
     return {
-      text: `**⚠️ ALERTA CRÍTICA: PÉRDIDA ACTIVA**\n\nCada minuto que pasa sin IA = **3.47€ perdidos**\n\n**REALIDAD BRUTAL:**\n💸 Tu competencia está capturando TUS clientes\n💸 Pierdes 83€ CADA DÍA\n💸 30.000€ CADA AÑO\n\n**SOLUCIÓN INMEDIATA:** Demo de 30 min donde te muestro cómo ganar 2.000€+ extra cada mes.\n\n**¿Hablamos AHORA o prefieres seguir perdiendo dinero?**`,
+      text: `⚠️ **ALERTA CRÍTICA: PÉRDIDA ACTIVA EN TIEMPO REAL**\n\nCada minuto que pasa sin IA = **4.33€ perdidos**\nCada hora = **260€ perdidos**\nCada día = **6.240€ perdidos**\n\n**REALIDAD BRUTAL:**\n💸 Tu competencia está capturando TUS clientes AHORA MISMO\n💸 Pierdes 6.240€ CADA DÍA que esperas\n💸 187.200€ CADA MES sin automatización\n💸 2.246.400€ CADA AÑO de pérdidas\n\n**SOLUCIÓN INMEDIATA:** Demo de 30 min donde te muestro:\n✅ Cómo recuperar esas pérdidas en 7 días\n✅ Plan específico para TU empresa\n✅ ROI garantizado del 320%\n✅ Implementación sin riesgo\n\n**PREGUNTA DIRECTA:** ¿Prefieres seguir perdiendo 6.240€ cada día o empezar a ganarlos?`,
       actions: [
         {
           type: 'whatsapp',
-          text: '🚨 PARAR PÉRDIDAS AHORA',
-          message: `🚨 URGENTE - Parar Pérdidas\n\nHola Carlos, tienes razón. Mi empresa está perdiendo dinero cada minuto.\n\nNECESITO hablar contigo AHORA para parar las pérdidas.\n\n¿Puedes llamarme en los próximos 5 minutos?`
+          text: '🚨 PARAR PÉRDIDAS AHORA MISMO',
+          message: `🚨 URGENTE - Parar Pérdidas Inmediatas\n\nHola Carlos, tienes razón. Mi empresa está perdiendo 6.240€ cada día.\n\nNECESITO hablar contigo AHORA MISMO para parar las pérdidas.\n\n¿Puedes llamarme en los próximos 2 minutos?\n\nMi teléfono: [AÑADIR TELÉFONO]\nMi empresa: [AÑADIR EMPRESA]`
         },
         {
           type: 'calendly',
           text: '📅 DEMO URGENTE (30 MIN)',
         }
       ],
-      quickReplies: ["¿Cuánto ganaré exactamente?", "Casos de éxito", "Garantías", "CERRAR YA"]
+      quickReplies: ["¿Cuánto ganaré exactamente?", "Casos de éxito", "Garantías totales", "CERRAR YA"]
     };
   };
 
@@ -398,7 +354,7 @@ const ChatBot = () => {
     setTimeout(() => {
       const response = getBotResponse(userMessage);
       addBotMessage(response.text, response.quickReplies, response.actions);
-    }, 800 + Math.random() * 400);
+    }, 1200 + Math.random() * 600);
   };
 
   const handleQuickReply = (reply: string) => {
@@ -407,7 +363,7 @@ const ChatBot = () => {
     setTimeout(() => {
       const response = getBotResponse(reply);
       addBotMessage(response.text, response.quickReplies, response.actions);
-    }, 600);
+    }, 800);
   };
 
   const handleAction = (action: NonNullable<Message['actions']>[0]) => {
@@ -454,8 +410,8 @@ const ChatBot = () => {
             {/* Tooltip mejorado */}
             <div className="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-neutral-900 text-white px-4 py-3 rounded-xl text-sm whitespace-nowrap shadow-xl border border-danger-400/30">
-                <div className="font-bold text-danger-400">🚨 Carlos - Especialista en Ventas</div>
-                <div className="text-neutral-300">Tu empresa pierde 83€/día</div>
+                <div className="font-bold text-danger-400">🚨 Carlos - Especialista #1 España</div>
+                <div className="text-neutral-300">Tu empresa pierde 6.240€/día</div>
                 <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-900"></div>
               </div>
             </div>
@@ -478,10 +434,10 @@ const ChatBot = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg">Carlos - Especialista IAFY</h3>
+                <h3 className="text-white font-bold text-lg">Carlos Mendoza</h3>
                 <p className="text-primary-100 text-sm flex items-center">
                   <TrendingUp className="w-3 h-3 mr-1" />
-                  🚨 URGENTE: Pierdes 83€/día
+                  🚨 Especialista #1 España
                 </p>
               </div>
             </div>
