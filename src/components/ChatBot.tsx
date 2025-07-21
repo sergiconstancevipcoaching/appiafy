@@ -41,7 +41,7 @@ const ChatBot = () => {
     if (!hasShownWelcome) {
       setTimeout(() => {
         addBotMessage(
-          "🚀 **¡ALERTA EMPRESARIAL CRÍTICA!** \n\nSoy Carlos Mendoza, el especialista #1 en automatización empresarial de España. \n\n**DIAGNÓSTICO INMEDIATO:** Tu empresa está perdiendo **2.847€ CADA SEMANA** por no tener IA trabajando 24/7.\n\n**DATOS REALES:**\n💸 40% de llamadas perdidas = 1.200€/semana\n💸 Clientes nocturnos perdidos = 800€/semana  \n💸 Personal administrativo innecesario = 847€/semana\n\n**¿Cuál es tu nombre?** Necesito cualificarte para la **DEMO URGENTE** que va a transformar tu negocio.",
+          "🚀 ¡ALERTA EMPRESARIAL CRÍTICA!\n\nSoy Carlos Mendoza, el especialista #1 en automatización empresarial de España.\n\nDIAGNÓSTICO INMEDIATO: Tu empresa está perdiendo 187.200€ AL MES por no tener IA trabajando 24/7.\n\nDATOS REALES:\n💸 40% de llamadas perdidas = 74.880€/mes\n💸 Clientes nocturnos perdidos = 56.160€/mes\n💸 Personal administrativo innecesario = 56.160€/mes\n\n¿Cuál es tu nombre? Necesito cualificarte para la DEMO URGENTE que va a transformar tu negocio.",
           ["Mi nombre es...", "¿Cómo pierdes tanto dinero?", "Quiero la demo YA", "¿Qué es IAFY exactamente?", "Casos de éxito reales"]
         );
         setHasShownWelcome(true);
@@ -53,7 +53,7 @@ const ChatBot = () => {
     if (isOpen && messages.length === 0 && hasShownWelcome) {
       setTimeout(() => {
         addBotMessage(
-          "🔥 **¡PERFECTO! Veo que estás listo para actuar.**\n\nComo especialista en ventas con +15 años automatizando empresas, te garantizo que en los próximos 5 minutos vas a descubrir:\n\n✅ **Exactamente cuánto dinero pierdes** cada día\n✅ **Cómo recuperar esas pérdidas** en 7 días\n✅ **El plan específico** para tu empresa\n✅ **Garantía total** de resultados\n\n**¿Cuál es tu nombre?** Voy a hacer un análisis personalizado de tu situación.",
+          "🔥 ¡PERFECTO! Veo que estás listo para actuar.\n\nComo especialista en ventas con +15 años automatizando empresas, te garantizo que en los próximos 5 minutos vas a descubrir:\n\n✅ Exactamente cuánto dinero pierdes cada día\n✅ Cómo recuperar esas pérdidas en 7 días\n✅ El plan específico para tu empresa\n✅ Garantía total de resultados\n\n¿Cuál es tu nombre? Voy a hacer un análisis personalizado de tu situación.",
           ["Mi nombre es...", "Analiza mi empresa", "¿Cuánto cuesta?", "Casos de éxito", "Garantías reales"]
         );
       }, 500);
@@ -159,7 +159,7 @@ const ChatBot = () => {
         setUserName(nameMatch[1].trim());
         setConversationStage('qualifying');
         return {
-          text: `¡Excelente ${nameMatch[1].trim()}! 🎯\n\n**ANÁLISIS INMEDIATO DE TU SITUACIÓN:**\n\nComo especialista que ha automatizado +50 empresas, veo que tu negocio está en **MODO SUPERVIVENCIA** en lugar de **MODO CRECIMIENTO**.\n\n**DIAGNÓSTICO PROFESIONAL:**\n📊 **Pérdida estimada:** 2.847€/semana\n📊 **Eficiencia actual:** 35% (debería ser 95%)\n📊 **Competencia ganando:** Mientras duermes\n📊 **Potencial de crecimiento:** +180% con IA\n\n**PREGUNTA CLAVE:** ¿Cuál es tu empresa, ${nameMatch[1].trim()}? Necesito hacer un cálculo exacto de tus pérdidas específicas.`,
+          text: `¡Excelente ${nameMatch[1].trim()}! 🎯\n\nANÁLISIS INMEDIATO DE TU SITUACIÓN:\n\nComo especialista que ha automatizado +50 empresas, veo que tu negocio está en MODO SUPERVIVENCIA en lugar de MODO CRECIMIENTO.\n\nDIAGNÓSTICO PROFESIONAL:\n📊 Pérdida estimada: 187.200€/mes\n📊 Eficiencia actual: 35% (debería ser 95%)\n📊 Competencia ganando: Mientras duermes\n📊 Potencial de crecimiento: +180% con IA\n\nPREGUNTA CLAVE: ¿Cuál es tu empresa, ${nameMatch[1].trim()}? Necesito hacer un cálculo exacto de tus pérdidas específicas.`,
           quickReplies: ["Mi empresa es...", "¿Cómo calculas las pérdidas?", "Quiero ver casos similares", "Demo personalizada YA", "¿Qué garantías ofreces?"]
         };
       }
@@ -169,7 +169,7 @@ const ChatBot = () => {
     if (message.includes('cómo pierdes') || message.includes('tanto dinero') || message.includes('cómo calculas') || message.includes('pérdidas')) {
       setConversationStage('educating');
       return {
-        text: `📊 **METODOLOGÍA CIENTÍFICA DE CÁLCULO DE PÉRDIDAS**\n\n**FÓRMULA PROBADA** (aplicada en +50 empresas):\n\n**1. LLAMADAS PERDIDAS (40% promedio)**\n💸 150 llamadas/mes × 40% perdidas = 60 oportunidades\n💸 60 oportunidades × 150€ valor promedio = **9.000€/mes**\n\n**2. HORARIO LIMITADO (16h sin atención)**\n💸 Clientes nocturnos/fines de semana = **3.200€/mes**\n💸 Competencia capturando TUS clientes = **2.100€/mes**\n\n**3. PERSONAL ADMINISTRATIVO INNECESARIO**\n💸 Recepcionista: 1.800€/mes\n💸 Coordinador: 2.200€/mes\n💸 Tareas que IA hace gratis: **4.000€/mes**\n\n**TOTAL PÉRDIDA MENSUAL: 18.300€**\n**PÉRDIDA ANUAL: 219.600€**\n\n**¿Quieres que calculemos TU pérdida exacta?**`,
+        text: `📊 METODOLOGÍA CIENTÍFICA DE CÁLCULO DE PÉRDIDAS\n\nFÓRMULA PROBADA (aplicada en +50 empresas):\n\n1. LLAMADAS PERDIDAS (40% promedio)\n💸 500 llamadas/mes × 40% perdidas = 200 oportunidades\n💸 200 oportunidades × 374€ valor promedio = 74.880€/mes\n\n2. HORARIO LIMITADO (16h sin atención)\n💸 Clientes nocturnos/fines de semana = 56.160€/mes\n💸 Competencia capturando TUS clientes = 28.080€/mes\n\n3. PERSONAL ADMINISTRATIVO INNECESARIO\n💸 Recepcionista: 2.400€/mes\n💸 Coordinador: 2.800€/mes\n💸 Tareas que IA hace gratis = 28.080€/mes\n\nTOTAL PÉRDIDA MENSUAL: 187.200€\nPÉRDIDA ANUAL: 2.246.400€\n\n¿Quieres que calculemos TU pérdida exacta?`,
         quickReplies: ["Sí, mi pérdida exacta", "¿Cómo lo solucionáis?", "Casos de empresas similares", "Demo con cálculos reales", "Implementar YA"]
       };
     }
