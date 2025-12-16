@@ -11,7 +11,6 @@ const RiskFreeOffer = lazy(() => import('./components/RiskFreeOffer'));
 const CalendlySection = lazy(() => import('./components/CalendlySection'));
 const FloatingCTA = lazy(() => import('./components/FloatingCTA'));
 const Footer = lazy(() => import('./components/Footer'));
-const ChatBot = lazy(() => import('./components/ChatBot'));
 
 // Lazy load pages
 const Documentation = lazy(() => import('./pages/Documentation'));
@@ -67,8 +66,6 @@ function App() {
             <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
             <Route path="/terminos-de-servicio" element={<TermsOfService />} />
           </Routes>
-
-          <ChatBot />
         </Suspense>
       </div>
     </Router>

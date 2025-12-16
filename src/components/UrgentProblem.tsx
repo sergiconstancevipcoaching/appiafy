@@ -5,7 +5,7 @@ const UrgentProblem = () => {
   const problems = [
     {
       icon: Phone,
-      title: 'Llamadas perdidas = Pacientes perdidos',
+      title: 'Llamadas perdidas = Clientes perdidos',
       description: 'Cada llamada no contestada son 150-300€ que se van directamente a tu competencia.',
       stat: '40%',
       color: 'danger',
@@ -16,11 +16,11 @@ const UrgentProblem = () => {
     {
       icon: Clock,
       title: 'Horario limitado = Oportunidades perdidas',
-      description: 'Tu clínica "cierra" pero los pacientes buscan atención 24/7. Mientras duermes, otros facturan.',
+      description: 'Tu negocio "cierra" pero los clientes buscan atención 24/7. Mientras duermes, otros facturan.',
       stat: '16h',
       color: 'electric',
       impact: 'sin atención diaria',
-      dailyLoss: 'Incalculable',
+      dailyLoss: '∞',
       businessIcon: Target
     },
     {
@@ -54,7 +54,7 @@ const UrgentProblem = () => {
           </div>
           
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-danger-100 to-gold-200 mb-6 md:mb-8 leading-tight">
-            ¿Tu clínica está perdiendo
+            ¿Tu empresa está perdiendo
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-danger-400 to-primary-400">
               dinero cada día?
@@ -62,7 +62,7 @@ const UrgentProblem = () => {
           </h2>
           <div className="max-w-5xl mx-auto bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-neutral-700/50">
             <p className="text-xl md:text-2xl lg:text-3xl text-neutral-300 leading-relaxed">
-              Mientras duermes, tus competidores están capturando a tus pacientes potenciales con IA que nunca descansa.
+              Mientras duermes, tus competidores están capturando a TUS clientes potenciales con IA que nunca descansa.
             </p>
           </div>
         </div>
@@ -117,9 +117,9 @@ const UrgentProblem = () => {
             <div className="relative bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 lg:p-16 max-w-6xl mx-auto shadow-lg border-2 border-danger-400/30">
               <Target className="w-16 h-16 md:w-20 md:h-20 text-danger-400 mx-auto mb-6 md:mb-8" />
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 md:mb-10">
-                ⚠️ IMPACTO TOTAL EN TU CLÍNICA
+                ⚠️ IMPACTO TOTAL EN TU EMPRESA
               </h3>
-              
+
               <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-8 md:mb-10">
                 <div className="bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 p-6 md:p-8 rounded-3xl border border-neutral-700/50">
                   <div className="text-5xl md:text-6xl font-black text-white mb-3 md:mb-4 flex items-center justify-center">
@@ -133,7 +133,7 @@ const UrgentProblem = () => {
                   <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-electric-400 mb-3 md:mb-4">
                     -200
                   </div>
-                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Pacientes perdidos/mes</div>
+                  <div className="text-neutral-300 font-semibold text-lg md:text-xl">Clientes perdidos/mes</div>
                   <div className="text-gold-400 text-base md:text-lg mt-2">Que van a tu competencia</div>
                 </div>
                 <div className="bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 p-6 md:p-8 rounded-3xl border border-neutral-700/50">
@@ -144,13 +144,13 @@ const UrgentProblem = () => {
                   <div className="text-primary-400 text-base md:text-lg mt-2">Cada día que esperas</div>
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-br from-danger-900/30 to-neutral-900/50 rounded-3xl p-6 md:p-8 border-2 border-danger-400/40">
                 <p className="text-xl md:text-2xl text-danger-300 font-bold mb-3 md:mb-4">
-                  ⚠️ URGENCIA MÉDICA: Cada día que esperas, estas cifras aumentan
+                  ⚠️ URGENTE: Cada día que esperas, estas cifras aumentan
                 </p>
                 <p className="text-neutral-400 text-lg md:text-xl">
-                  Tu competencia ya está usando IA para capturar estos pacientes perdidos. ¿Hasta cuándo vas a permitir que te roben TUS pacientes?
+                  Tu competencia ya está usando IA para capturar estos clientes perdidos. ¿Hasta cuándo vas a permitir que te roben TUS clientes?
                 </p>
               </div>
             </div>

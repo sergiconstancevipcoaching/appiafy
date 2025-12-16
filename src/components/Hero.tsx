@@ -1,7 +1,9 @@
-import React from 'react';
-import { ArrowRight, Calendar, AlertTriangle, Sparkles, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Calendar, AlertTriangle, Sparkles, Zap, MessageCircle } from 'lucide-react';
+import IAFYChat from './IAFYChat';
 
 const Hero = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
     <>
@@ -113,14 +115,13 @@ const Hero = () => {
                   </span>
                 </a>
 
-                <a
-                  href="https://wa.me/34621482256?text=Hola%2C%20tengo%20una%20empresa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20IAFY%20y%20la%20automatizaci%C3%B3n%20con%20IA."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setIsChatOpen(true)}
                   className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-blue-400 border-2 border-blue-400/50 hover:bg-blue-400/10 hover:border-blue-400 rounded-2xl transform hover:scale-105 transition-all duration-300"
                 >
-                  <span>Hablar por WhatsApp</span>
-                </a>
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <span>Hablar con IAfy</span>
+                </button>
               </div>
 
               {/* Garantías */}
@@ -206,6 +207,9 @@ const Hero = () => {
           </div>
         </div>
       </section>
+
+      {/* Chat integrado */}
+      <IAFYChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </>
   );
 };
