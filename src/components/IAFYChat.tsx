@@ -97,8 +97,14 @@ const IAFYChat: React.FC<IAFYChatProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl border border-blue-500/30 flex flex-col max-h-[600px]">
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-lg h-[90vh] max-h-[700px] bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl border border-blue-500/30 flex flex-col animate-scaleIn overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-blue-500/20 bg-gradient-to-r from-slate-900/95 to-blue-900/30">
           <div className="flex items-center space-x-4">

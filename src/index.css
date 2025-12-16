@@ -717,6 +717,26 @@ div[class*="animate-"] {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Clases de animación optimizadas */
 .animate-float {
   animation: float 3s ease-in-out infinite;
@@ -757,6 +777,14 @@ div[class*="animate-"] {
 .animate-bounce-slow {
   animation: bounce-slow 3s ease-in-out infinite;
   will-change: transform;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
 }
 
 /* Optimizaciones críticas de performance para móvil */
