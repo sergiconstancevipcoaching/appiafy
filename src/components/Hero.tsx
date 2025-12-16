@@ -1,75 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Calendar, AlertTriangle, Volume2, VolumeX, Play } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Calendar, AlertTriangle, Sparkles, Zap } from 'lucide-react';
 
 const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      // Configurar eventos del video
-      const handleLoadStart = () => setIsLoading(true);
-      const handleCanPlay = () => setIsLoading(false);
-      const handlePlay = () => setIsPlaying(true);
-      const handlePause = () => setIsPlaying(false);
-
-      video.addEventListener('loadstart', handleLoadStart);
-      video.addEventListener('canplay', handleCanPlay);
-      video.addEventListener('play', handlePlay);
-      video.addEventListener('pause', handlePause);
-
-      // Intentar reproducir con audio
-      const playVideo = async () => {
-        try {
-          video.muted = false;
-          setIsMuted(false);
-          await video.play();
-        } catch (error) {
-          // Si falla con audio, intentar sin audio
-          try {
-            video.muted = true;
-            setIsMuted(true);
-            await video.play();
-          } catch (secondError) {
-            console.log('Autoplay no permitido');
-            setIsLoading(false);
-          }
-        }
-      };
-      
-      // Delay para asegurar que el video esté listo
-      setTimeout(playVideo, 500);
-
-      return () => {
-        video.removeEventListener('loadstart', handleLoadStart);
-        video.removeEventListener('canplay', handleCanPlay);
-        video.removeEventListener('play', handlePlay);
-        video.removeEventListener('pause', handlePause);
-      };
-    }
-  }, []);
-
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = !video.muted;
-      setIsMuted(video.muted);
-    }
-  };
-
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (video) {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    }
-  };
 
   return (
     <>
@@ -141,19 +73,19 @@ const Hero = () => {
               {/* Badge de urgencia */}
               <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm border border-red-500/40 rounded-full px-6 py-3 shadow-lg">
                 <AlertTriangle className="w-5 h-5 text-red-400 animate-pulse" />
-                <span className="text-red-300 font-bold">🚨 Tu negocio pierde clientes</span>
+                <span className="text-red-300 font-bold">Tu empresa pierde clientes AHORA</span>
               </div>
 
               {/* Título principal */}
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
-                  <span className="block text-white mb-2">Tu empresa</span>
-                  <span className="block text-white mb-2">pierde</span>
+                  <span className="block text-white mb-2">Tu negocio</span>
+                  <span className="block text-white mb-2">pierde hasta</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-red-500 mb-2">
-                    30.000€ al año
+                    50.000€ al año
                   </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                    por no tener IA
+                    sin automatización IA
                   </span>
                 </h1>
               </div>
@@ -161,8 +93,8 @@ const Hero = () => {
               {/* Subtítulo */}
               <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm p-6 rounded-2xl border border-blue-400/30">
                 <p className="text-xl md:text-2xl text-slate-200 leading-relaxed">
-                  Mientras lees esto, tu competencia captura clientes con IA 24/7. 
-                  <span className="text-red-400 font-bold"> ¿Hasta cuándo vas a permitir que te roben ventas?</span>
+                  <span className="text-blue-400 font-bold">Ecommerce, clínicas, inmobiliarias, despachos, agencias...</span> Cualquier sector que atiende clientes está perdiendo dinero cada día sin IA.
+                  <span className="text-red-400 font-bold"> ¿Cuánto está perdiendo TU empresa?</span>
                 </p>
               </div>
 
@@ -209,95 +141,83 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Video a la derecha */}
+            {/* Avatar IA flotante dimensional */}
             <div className="relative">
               <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                
-                <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl">
-                  <div className="aspect-video relative">
-                    {/* Loading indicator */}
-                    {isLoading && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-800 text-white z-10">
-                        <div className="text-center">
-                          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                          <p className="text-slate-300">Cargando video...</p>
-                        </div>
-                      </div>
-                    )}
+                {/* Anillos dimensionales giratorios */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute w-full h-full border-4 border-blue-500/30 rounded-full animate-spin-slow"></div>
+                  <div className="absolute w-5/6 h-5/6 border-4 border-purple-500/30 rounded-full animate-spin-reverse"></div>
+                  <div className="absolute w-4/6 h-4/6 border-4 border-cyan-500/30 rounded-full animate-spin-slow"></div>
+                </div>
 
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover rounded-3xl"
-                      loop
-                      playsInline
-                      preload="metadata"
-                      muted={isMuted}
-                    >
-                      <source src="https://videomp46523.live-website.com/wp-content/uploads/2025/07/VIDEO-WEBINAR-PREVIO-A-DEMO-2.mp4" type="video/mp4" />
-                      <div className="flex items-center justify-center h-full bg-slate-800 text-white">
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <div className="w-0 h-0 border-l-8 border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1"></div>
-                          </div>
-                          <p>Tu navegador no soporta video HTML5</p>
-                        </div>
-                      </div>
-                    </video>
+                {/* Portal dimensional de fondo */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
 
-                    {/* Controles de video personalizados */}
-                    <div className="absolute top-4 right-4 flex space-x-2">
-                      {/* Botón de audio */}
-                      <button
-                        onClick={toggleMute}
-                        className="bg-black/70 hover:bg-black/90 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 transform hover:scale-110 shadow-lg border border-white/20"
-                        title={isMuted ? 'Activar audio' : 'Silenciar audio'}
-                      >
-                        {isMuted ? (
-                          <VolumeX className="w-5 h-5" />
-                        ) : (
-                          <Volume2 className="w-5 h-5" />
-                        )}
-                      </button>
-
-                      {/* Botón de play/pause */}
-                      <button
-                        onClick={togglePlay}
-                        className="bg-black/70 hover:bg-black/90 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 transform hover:scale-110 shadow-lg border border-white/20"
-                        title={isPlaying ? 'Pausar' : 'Reproducir'}
-                      >
-                        {isPlaying ? (
-                          <div className="w-5 h-5 flex items-center justify-center">
-                            <div className="w-1.5 h-4 bg-white rounded-sm mr-1"></div>
-                            <div className="w-1.5 h-4 bg-white rounded-sm"></div>
-                          </div>
-                        ) : (
-                          <Play className="w-5 h-5 ml-0.5" />
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Indicador de estado de audio */}
-                    {!isMuted && (
-                      <div className="absolute bottom-4 left-4">
-                        <div className="bg-green-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center space-x-2">
-                          <Volume2 className="w-4 h-4" />
-                          <span>Audio activado</span>
-                        </div>
-                      </div>
-                    )}
+                {/* Avatar IA central */}
+                <div className="relative aspect-square flex items-center justify-center">
+                  {/* Efecto de energía */}
+                  <div className="absolute inset-0">
+                    <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-400/40 rounded-full blur-2xl animate-float"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-purple-400/40 rounded-full blur-2xl animate-float-delayed"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-400/30 rounded-full blur-2xl animate-pulse"></div>
                   </div>
-                  
-                  {/* Overlay con información */}
-                  <div className="absolute bottom-4 right-4 left-4">
-                    <div className="bg-black/70 backdrop-blur-sm rounded-xl p-4">
-                      <div className="text-white font-bold text-lg mb-1">
-                        Descubre cómo IAFY automatiza tu empresa
-                      </div>
-                      <div className="text-slate-300 text-sm">
-                        Ve casos reales de empresas que ya están ganando con IA
+
+                  {/* Cabeza del avatar */}
+                  <div className="relative z-10 w-48 h-48 bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 rounded-3xl transform rotate-45 group-hover:rotate-90 transition-transform duration-700 shadow-2xl">
+                    <div className="absolute inset-2 bg-gradient-to-br from-slate-900/90 to-slate-800/90 rounded-3xl transform -rotate-45 group-hover:-rotate-90 transition-transform duration-700 flex items-center justify-center">
+                      {/* Ojos IA */}
+                      <div className="flex space-x-8">
+                        <div className="w-4 h-12 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full animate-pulse shadow-lg shadow-cyan-500/50"></div>
+                        <div className="w-4 h-12 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full animate-pulse shadow-lg shadow-cyan-500/50" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Partículas flotantes */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    {[...Array(12)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-particle"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 3}s`,
+                          animationDuration: `${3 + Math.random() * 2}s`
+                        }}
+                      ></div>
+                    ))}
+                  </div>
+
+                  {/* Ondas de energía */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute w-64 h-64 border-2 border-cyan-400/20 rounded-full animate-ping-slow"></div>
+                    <div className="absolute w-72 h-72 border-2 border-purple-400/20 rounded-full animate-ping-slow" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="absolute w-80 h-80 border-2 border-blue-400/20 rounded-full animate-ping-slow" style={{ animationDelay: '1s' }}></div>
+                  </div>
+                </div>
+
+                {/* Insignias flotantes */}
+                <div className="absolute top-8 -right-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-2xl font-bold shadow-xl animate-bounce-slow">
+                  <Sparkles className="w-5 h-5 inline mr-2" />
+                  IA Avanzada
+                </div>
+
+                <div className="absolute bottom-8 -left-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-2xl font-bold shadow-xl animate-bounce-slow" style={{ animationDelay: '0.5s' }}>
+                  <Zap className="w-5 h-5 inline mr-2" />
+                  24/7 Activo
+                </div>
+
+                {/* Texto descriptivo */}
+                <div className="absolute -bottom-16 left-0 right-0 text-center">
+                  <div className="inline-block bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-blue-400/30 rounded-2xl px-6 py-4">
+                    <p className="text-blue-300 font-bold text-lg">
+                      Tu Asistente IA Dimensional
+                    </p>
+                    <p className="text-slate-400 text-sm mt-1">
+                      Trabajando desde otra dimensión para tu empresa
+                    </p>
                   </div>
                 </div>
               </div>

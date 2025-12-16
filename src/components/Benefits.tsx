@@ -4,26 +4,26 @@ import { Phone, Calendar, Euro, Settings, Zap, Shield } from 'lucide-react';
 const benefits = [
   {
     icon: Phone,
-    title: 'Atiende WhatsApp y llamadas sin intervención',
-    description: 'Tu asistente IA responde automáticamente a consultas de pacientes las 24 horas del día',
+    title: 'Atiende WhatsApp, email y llamadas 24/7',
+    description: 'Tu asistente IA responde automáticamente todas las consultas de clientes en cualquier canal, sin parar nunca',
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
     icon: Calendar,
-    title: 'Agenda citas automáticamente, 24/7',
-    description: 'Los pacientes pueden reservar citas en cualquier momento sin intervención humana',
+    title: 'Agenda automática inteligente',
+    description: 'Tus clientes pueden agendar reuniones, citas o demos en cualquier momento sin intervención humana',
     gradient: 'from-purple-500 to-pink-500'
   },
   {
     icon: Euro,
-    title: 'Reduce hasta 2.500 €/mes en plantilla',
-    description: 'Automatiza tareas repetitivas y optimiza los recursos de tu equipo',
+    title: 'Ahorra 2.000-3.500€/mes en personal',
+    description: 'Automatiza atención al cliente, gestión de consultas y tareas administrativas que consumen recursos',
     gradient: 'from-green-500 to-emerald-500'
   },
   {
     icon: Settings,
-    title: 'Integración total con tu CRM',
-    description: 'Se conecta perfectamente con tus sistemas existentes sin interrupciones',
+    title: 'Se integra con tus sistemas actuales',
+    description: 'Compatible con cualquier CRM, plataforma o herramienta que uses. Implementación en días, no meses',
     gradient: 'from-orange-500 to-red-500'
   }
 ];
@@ -45,10 +45,10 @@ const Benefits = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 mb-6">
-            Transforma tu clínica con IA
+            Transforma tu negocio con IA
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Tecnología avanzada que trabaja mientras tú descansas
+            Tecnología que trabaja 24/7 para cualquier sector: ecommerce, servicios, B2B, retail...
           </p>
         </div>
 

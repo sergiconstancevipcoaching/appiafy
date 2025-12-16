@@ -35,11 +35,20 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separar chunks para mejor caching
-          'react-vendor': ['react', 'react-dom'],
-          'router-vendor': ['react-router-dom'],
-          'icons-vendor': ['lucide-react'],
+        manualChunks(id) {
+          // Separar vendors automáticamente
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react';
+            }
+            if (id.includes('react-router')) {
+              return 'router';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons';
+            }
+            return 'vendor';
+          }
         },
         // Nombres de archivos optimizados para caching
         chunkFileNames: 'js/[name]-[hash:8].js',

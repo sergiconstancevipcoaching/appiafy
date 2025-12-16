@@ -7,7 +7,7 @@ const Pricing = () => {
       name: 'Starter',
       price: '297',
       period: '/mes',
-      description: 'Perfecto para clínicas pequeñas que empiezan con IA',
+      description: 'Perfecto para pequeñas empresas que empiezan con IA',
       icon: Zap,
       gradient: 'from-blue-500 to-cyan-500',
       features: [
@@ -24,7 +24,7 @@ const Pricing = () => {
       name: 'Professional',
       price: '497',
       period: '/mes',
-      description: 'La opción más popular para clínicas en crecimiento',
+      description: 'La opción más popular para empresas en crecimiento',
       icon: Star,
       gradient: 'from-purple-500 to-pink-500',
       features: [
@@ -43,7 +43,7 @@ const Pricing = () => {
       name: 'Enterprise',
       price: '997',
       period: '/mes',
-      description: 'Para clínicas grandes que necesitan máximo rendimiento',
+      description: 'Para grandes empresas que necesitan máximo rendimiento',
       icon: Crown,
       gradient: 'from-yellow-500 to-orange-500',
       features: [
@@ -78,7 +78,7 @@ const Pricing = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-100 to-pink-200 mb-6">
-            Elige el plan perfecto para tu clínica
+            Elige el plan perfecto para tu empresa
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Todos los planes incluyen 30 días de garantía sin compromiso

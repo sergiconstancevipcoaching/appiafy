@@ -5,23 +5,23 @@ const ProblemSolution = () => {
   const problems = [
     {
       icon: TrendingDown,
-      title: 'Pierdes hasta 40% de pacientes potenciales',
-      description: 'Las llamadas no contestadas y mensajes sin responder se convierten en pacientes perdidos para siempre',
-      stat: '40%',
+      title: 'Pierdes hasta 45% de clientes potenciales',
+      description: 'Llamadas no contestadas, mensajes ignorados y consultas web abandonadas. Clientes que se van a tu competencia',
+      stat: '45%',
       color: 'from-danger-500 to-danger-600'
     },
     {
       icon: Clock,
-      title: 'Tu equipo pierde 3-4 horas diarias',
-      description: 'Atendiendo llamadas repetitivas, agendando citas y respondiendo las mismas preguntas básicas',
-      stat: '4h',
+      title: 'Tu equipo desperdicia 4-5 horas diarias',
+      description: 'Respondiendo preguntas repetitivas, gestionando consultas básicas y realizando tareas que la IA puede automatizar',
+      stat: '5h',
       color: 'from-primary-500 to-primary-600'
     },
     {
       icon: Users,
-      title: 'Costes de personal hasta 2.500€/mes',
-      description: 'Recepcionistas, coordinadores y personal administrativo para tareas que la IA puede hacer mejor',
-      stat: '2.500€',
+      title: 'Gastos de personal: 2.000-3.500€/mes',
+      description: 'Atención al cliente, gestión de consultas y administración que la IA realiza mejor, más rápido y 24/7',
+      stat: '3.500€',
       color: 'from-neutral-600 to-neutral-700'
     }
   ];
@@ -29,21 +29,21 @@ const ProblemSolution = () => {
   const solutions = [
     {
       icon: Target,
-      title: 'Captura 100% de leads 24/7',
-      description: 'Nunca más pierdas un paciente. La IA responde instantáneamente a todas las consultas',
-      improvement: '+60% conversión'
+      title: 'Captura 100% de tus leads 24/7',
+      description: 'Nunca más pierdas un cliente. La IA responde instantáneamente todas las consultas, cualquier hora, cualquier canal',
+      improvement: '+65% conversión'
     },
     {
       icon: Zap,
-      title: 'Automatización total sin intervención',
-      description: 'Agenda citas, responde dudas y cualifica pacientes automáticamente',
-      improvement: '4h ahorradas/día'
+      title: 'Automatización completa sin intervención',
+      description: 'Gestiona consultas, agenda reuniones, cualifica leads y atiende clientes automáticamente mientras duermes',
+      improvement: '5h ahorradas/día'
     },
     {
       icon: TrendingDown,
-      title: 'Reduce costes operativos drásticamente',
-      description: 'Elimina la necesidad de personal adicional para atención al cliente',
-      improvement: 'Hasta 2.500€/mes'
+      title: 'Reduce hasta 70% tus costes operativos',
+      description: 'Elimina gastos de personal administrativo y de atención al cliente. La IA lo hace mejor y más barato',
+      improvement: 'Hasta 3.500€/mes'
     }
   ];
 
@@ -64,10 +64,10 @@ const ProblemSolution = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-danger-100 to-primary-200 mb-6">
-            ¿Tu clínica está perdiendo dinero cada día?
+            ¿Tu empresa está perdiendo dinero cada día?
           </h2>
           <p className="text-xl lg:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
-            Mientras duermes, tus competidores están capturando a tus pacientes potenciales
+            Mientras duermes, tu competencia captura TUS clientes con IA trabajando 24/7
           </p>
         </div>
 
@@ -115,7 +115,7 @@ const ProblemSolution = () => {
             IAFY convierte estos problemas en ventajas competitivas
           </h2>
           <p className="text-xl lg:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
-            Automatización inteligente que trabaja 24/7 para hacer crecer tu clínica
+            Automatización inteligente que trabaja 24/7 para hacer crecer tu negocio
           </p>
         </div>
 
