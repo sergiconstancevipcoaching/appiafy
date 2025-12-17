@@ -41,7 +41,7 @@ const ChatBot = () => {
     if (!hasShownWelcome) {
       setTimeout(() => {
         addBotMessage(
-          "🏥 ¡Hola! Soy Carlos, especialista en automatización para clínicas.\n\nVeo que estás interesado en IAFY. Te ayudo a descubrir cómo puedes:\n\n✅ Atender pacientes 24/7 automáticamente\n✅ Agendar citas sin intervención humana\n✅ Reducir costos hasta 2.500€/mes\n✅ Nunca más perder pacientes por llamadas no contestadas\n\n¿Cuál es tu nombre? Así puedo personalizar la información para tu clínica.",
+          "🏥 ¡Hola! Soy Carlos, especialista en automatización empresarial.\n\nVeo que estás interesado en IAFY. Te ayudo a descubrir cómo puedes:\n\n✅ Atender clientes 24/7 automáticamente\n✅ Agendar citas sin intervención humana\n✅ Reducir costos hasta 2.500€/mes\n✅ Nunca más perder clientes por llamadas no contestadas\n\n¿Cuál es tu nombre? Así puedo personalizar la información para tu empresa.",
           ["Mi nombre es...", "¿Cómo funciona exactamente?", "Quiero ver una demo", "¿Cuánto cuesta?", "Casos de éxito"]
         );
         setHasShownWelcome(true);
@@ -53,7 +53,7 @@ const ChatBot = () => {
     if (isOpen && messages.length === 0 && hasShownWelcome) {
       setTimeout(() => {
         addBotMessage(
-          "👋 ¡Perfecto! Estás en el lugar correcto.\n\nComo especialista en automatización médica, he ayudado a +20 clínicas a transformar su atención al paciente.\n\nEn los próximos minutos descubrirás:\n✅ Cómo IAFY puede automatizar tu clínica\n✅ Casos de éxito reales de otras clínicas\n✅ El proceso de implementación paso a paso\n✅ Inversión y retorno específico\n\n¿Cuál es tu nombre? Así personalizo la información para tu clínica.",
+          "👋 ¡Perfecto! Estás en el lugar correcto.\n\nComo especialista en automatización empresarial, he ayudado a +20 empresas a transformar su atención al cliente.\n\nEn los próximos minutos descubrirás:\n✅ Cómo IAFY puede automatizar tu empresa\n✅ Casos de éxito reales de otras empresas\n✅ El proceso de implementación paso a paso\n✅ Inversión y retorno específico\n\n¿Cuál es tu nombre? Así personalizo la información para tu empresa.",
           ["Mi nombre es...", "¿Cómo funciona?", "Ver casos de éxito", "¿Cuánto cuesta?", "Agendar demo"]
         );
       }, 500);

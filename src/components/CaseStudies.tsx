@@ -4,7 +4,7 @@ import { TrendingUp, Users, Euro, Clock, ArrowRight, Star } from 'lucide-react';
 const CaseStudies = () => {
   const cases = [
     {
-      name: 'Clínica Dental Premium Madrid',
+      name: 'Empresa de Salud Premium Madrid',
       specialty: 'Odontología Estética',
       image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800',
       results: [
@@ -12,7 +12,7 @@ const CaseStudies = () => {
         { icon: Euro, metric: '3.200€', description: 'Ahorro mensual en personal' },
         { icon: Users, metric: '+150', description: 'Nuevos pacientes/mes' }
       ],
-      quote: "IAFY transformó completamente nuestra atención al paciente. Ahora capturamos leads las 24 horas y nuestro equipo se enfoca en lo que realmente importa: la atención médica.",
+      quote: "IAFY transformó completamente nuestra atención al cliente. Ahora capturamos leads las 24 horas y nuestro equipo se enfoca en lo que realmente importa: la atención de calidad.",
       author: "Dr. Carmen Rodríguez",
       position: "Directora Médica"
     },
@@ -25,12 +25,12 @@ const CaseStudies = () => {
         { icon: TrendingUp, metric: '+120%', description: 'Incremento en citas' },
         { icon: Euro, metric: '2.800€', description: 'Reducción de costes' }
       ],
-      quote: "La IA de IAFY entiende perfectamente nuestros tratamientos y sabe cómo hablar con nuestros pacientes. Es como tener a la mejor recepcionista trabajando sin descanso.",
+      quote: "La IA de IAFY entiende perfectamente nuestros servicios y sabe cómo hablar con nuestros clientes. Es como tener al mejor asistente trabajando sin descanso.",
       author: "Dra. Ana Martínez",
       position: "CEO"
     },
     {
-      name: 'Clínica Multidisciplinar Valencia',
+      name: 'Empresa Multidisciplinar Valencia',
       specialty: 'Medicina General',
       image: 'https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800',
       results: [
@@ -38,7 +38,7 @@ const CaseStudies = () => {
         { icon: TrendingUp, metric: '95%', description: 'Satisfacción pacientes' },
         { icon: Clock, metric: '4h', description: 'Tiempo ahorrado/día' }
       ],
-      quote: "Implementar IAFY fue la mejor decisión que tomamos. Nuestros pacientes están más satisfechos y nosotros podemos dedicar más tiempo a la medicina, no a la administración.",
+      quote: "Implementar IAFY fue la mejor decisión que tomamos. Nuestros clientes están más satisfechos y nosotros podemos dedicar más tiempo al negocio principal, no a la administración.",
       author: "Dr. Miguel Fernández",
       position: "Director Médico"
     }
@@ -60,10 +60,10 @@ const CaseStudies = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-green-100 to-blue-200 mb-6">
-            Clínicas que ya están triunfando con IAFY
+            Empresas que ya están triunfando con IAFY
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Resultados reales de clínicas que confiaron en nuestra tecnología
+            Resultados reales de empresas que confiaron en nuestra tecnología
           </p>
         </div>
 
@@ -151,7 +151,7 @@ const CaseStudies = () => {
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 hover:from-green-500 hover:via-blue-500 hover:to-purple-500 rounded-2xl shadow-2xl hover:shadow-green-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 border border-green-400/50"
           >
-            <span>Únete a estas clínicas exitosas</span>
+            <span>Únete a estas empresas exitosas</span>
             <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-200" />
           </a>
         </div>

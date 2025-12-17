@@ -9,7 +9,7 @@ const Implementation = () => {
       title: 'Configuración y Entrenamiento',
       description: 'Configuramos la IA con tu información, protocolos y estilo de atención específico',
       tasks: [
-        'Análisis de tu clínica y procesos',
+        'Análisis de tu empresa y procesos',
         'Configuración de respuestas personalizadas',
         'Entrenamiento con tu base de conocimiento',
         'Integración con WhatsApp Business'
@@ -33,7 +33,7 @@ const Implementation = () => {
       day: 'DÍA 6-7',
       icon: Rocket,
       title: 'Lanzamiento Completo',
-      description: 'Tu clínica ya opera 24/7 con IA. Monitoreo y soporte continuo incluido',
+      description: 'Tu empresa ya opera 24/7 con IA. Monitoreo y soporte continuo incluido',
       tasks: [
         'Lanzamiento en producción',
         'Capacitación de tu equipo',
@@ -64,7 +64,7 @@ const Implementation = () => {
             De 0 a automatización total en 7 días
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            <span className="text-purple-400 font-bold">PROCESO PROBADO.</span> Implementación rápida sin interrumpir las operaciones de tu clínica
+            <span className="text-purple-400 font-bold">PROCESO PROBADO.</span> Implementación rápida sin interrumpir las operaciones de tu empresa
           </p>
         </div>
 
@@ -137,7 +137,7 @@ const Implementation = () => {
             <div className="bg-gray-800/50 p-6 rounded-xl">
               <Users className="w-8 h-8 text-blue-400 mx-auto mb-3" />
               <div className="text-lg font-bold text-white mb-1">Equipo Dedicado</div>
-              <div className="text-gray-300 text-sm">Técnicos especializados en IA médica</div>
+              <div className="text-gray-300 text-sm">Técnicos especializados en IA empresarial</div>
             </div>
             <div className="bg-gray-800/50 p-6 rounded-xl">
               <Clock className="w-8 h-8 text-green-400 mx-auto mb-3" />
@@ -147,7 +147,7 @@ const Implementation = () => {
             <div className="bg-gray-800/50 p-6 rounded-xl">
               <CheckCircle className="w-8 h-8 text-purple-400 mx-auto mb-3" />
               <div className="text-lg font-bold text-white mb-1">Sin Interrupciones</div>
-              <div className="text-gray-300 text-sm">Tu clínica sigue operando normal</div>
+              <div className="text-gray-300 text-sm">Tu empresa sigue operando normal</div>
             </div>
           </div>
 

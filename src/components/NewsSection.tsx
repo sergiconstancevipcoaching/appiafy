@@ -5,7 +5,7 @@ const NewsSection = () => {
   const news = [
     {
       title: 'IAFY revoluciona la atención médica con IA conversacional',
-      excerpt: 'Más de 20 clínicas ya han implementado nuestra tecnología con resultados extraordinarios en automatización.',
+      excerpt: 'Más de 20 empresas ya han implementado nuestra tecnología con resultados extraordinarios en automatización.',
       date: '15 Enero 2025',
       category: 'Innovación',
       image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -20,7 +20,7 @@ const NewsSection = () => {
       gradient: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'Expansión: IAFY llega a 50 nuevas clínicas en 2025',
+      title: 'Expansión: IAFY llega a 50 nuevas empresas en 2025',
       excerpt: 'Nuestro crecimiento refleja la confianza del sector médico en la automatización inteligente.',
       date: '5 Enero 2025',
       category: 'Crecimiento',

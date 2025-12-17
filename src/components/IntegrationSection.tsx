@@ -48,7 +48,7 @@ const IntegrationSection = () => {
             Se conecta con todo tu ecosistema
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            IAFY se integra perfectamente con los sistemas que ya usas en tu clínica
+            IAFY se integra perfectamente con los sistemas que ya usas en tu empresa
           </p>
         </div>
 
@@ -127,7 +127,7 @@ const IntegrationSection = () => {
               ¿Usas un sistema específico?
             </h3>
             <p className="text-gray-300 mb-6">
-              Nuestro equipo técnico puede crear integraciones personalizadas para tu clínica
+              Nuestro equipo técnico puede crear integraciones personalizadas para tu empresa
             </p>
             <a
               href="https://calendly.com/iafyagency/30min?month=2025-06"

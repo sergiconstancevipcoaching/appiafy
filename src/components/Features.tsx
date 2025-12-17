@@ -13,7 +13,7 @@ const Features = () => {
     {
       icon: MessageSquare,
       title: 'WhatsApp Business Integrado',
-      description: 'Responde automáticamente a mensajes de WhatsApp con la personalidad de tu clínica',
+      description: 'Responde automáticamente a mensajes de WhatsApp con la personalidad de tu empresa',
       gradient: 'from-green-500 to-emerald-500',
       details: ['API oficial WhatsApp', 'Multimedia automático', 'Estados de lectura']
     },
@@ -63,10 +63,10 @@ const Features = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 mb-6">
-            Características que revolucionan tu clínica
+            Características que revolucionan tu empresa
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Tecnología de vanguardia diseñada específicamente para el sector médico
+            Tecnología de vanguardia diseñada para cualquier sector empresarial
           </p>
         </div>
 

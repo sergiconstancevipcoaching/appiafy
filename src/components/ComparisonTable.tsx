@@ -132,7 +132,7 @@ const ComparisonTable = () => {
             className="group inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 hover:from-blue-500 hover:via-purple-500 hover:to-cyan-500 rounded-2xl shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 border border-blue-400/50"
           >
             <Crown className="w-6 h-6 mr-3" />
-            <span>Elige la mejor opción para tu clínica</span>
+            <span>Elige la mejor opción para tu empresa</span>
           </a>
         </div>
       </div>

@@ -5,7 +5,7 @@ const IndustrySectors = () => {
   const sectors = [
     {
       icon: Stethoscope,
-      name: 'Clínicas y Salud',
+      name: 'Salud y Bienestar',
       gradient: 'from-blue-500 to-cyan-500',
       metrics: [
         { icon: Euro, value: '3.200€/mes', label: 'Ahorro en personal' },
@@ -13,7 +13,7 @@ const IndustrySectors = () => {
         { icon: Clock, value: '24/7', label: 'Atención pacientes' }
       ],
       savings: '38.400€/año',
-      example: 'Clínica Dental: automatiza citas, recordatorios y consultas básicas'
+      example: 'Empresa de Salud: automatiza citas, recordatorios y consultas básicas'
     },
     {
       icon: ShoppingBag,

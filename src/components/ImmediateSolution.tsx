@@ -53,7 +53,7 @@ const ImmediateSolution = () => {
           </div>
           
           <h2 className="text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-success-100 to-primary-200 mb-8">
-            IAFY transforma tu clínica con IA
+            IAFY transforma tu empresa con IA
           </h2>
           <div className="max-w-5xl mx-auto bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm p-8 rounded-3xl border border-neutral-700/50">
             <p className="text-2xl lg:text-3xl text-neutral-300 leading-relaxed">

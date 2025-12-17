@@ -6,7 +6,7 @@ const steps = [
     number: '01',
     icon: Calendar,
     title: 'Agenda una demo personalizada',
-    description: 'Reserva 30 minutos para conocer cómo IAFY puede transformar tu clínica específica',
+    description: 'Reserva 30 minutos para conocer cómo IAFY puede transformar tu empresa específica',
     gradient: 'from-blue-500 to-cyan-500',
     delay: '0s'
   },
@@ -21,7 +21,7 @@ const steps = [
   {
     number: '03',
     icon: Zap,
-    title: 'Automatiza WhatsApp, llamadas y agendas en tu clínica',
+    title: 'Automatiza WhatsApp, llamadas y agendas en tu empresa',
     description: 'Tu asistente IA comienza a trabajar 24/7 sin interrumpir tus operaciones actuales',
     gradient: 'from-green-500 to-emerald-500',
     delay: '0.4s'
@@ -48,7 +48,7 @@ const HowItWorks = () => {
             Cómo funciona
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            En solo 3 pasos simples, tu clínica estará operando con IA avanzada
+            En solo 3 pasos simples, tu empresa estará operando con IA avanzada
           </p>
         </div>
 

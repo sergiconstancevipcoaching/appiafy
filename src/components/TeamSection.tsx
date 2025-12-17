@@ -24,7 +24,7 @@ const TeamSection = () => {
       role: 'Director de Producto',
       specialty: 'UX/UI Médico',
       image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Diseñador de experiencias digitales para clínicas premium',
+      description: 'Diseñador de experiencias digitales para empresas premium',
       credentials: ['Design Thinking', 'UX Healthcare', 'Lean Startup']
     }
   ];
@@ -98,7 +98,7 @@ const TeamSection = () => {
         <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {[
             { icon: Briefcase, number: '5+', label: 'Años de experiencia', color: 'text-blue-400' },
-            { icon: Users, number: '20+', label: 'Clínicas atendidas', color: 'text-green-400' },
+            { icon: Users, number: '20+', label: 'Empresas atendidas', color: 'text-green-400' },
             { icon: GraduationCap, number: '50+', label: 'Certificaciones', color: 'text-purple-400' },
             { icon: Award, number: '99%', label: 'Satisfacción cliente', color: 'text-cyan-400' }
           ].map((stat, index) => (

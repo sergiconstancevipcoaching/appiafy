@@ -6,7 +6,7 @@ const ProofOfConcept = () => {
     {
       icon: Code,
       title: 'IA GPT-4 Turbo',
-      description: 'La misma tecnología que usa ChatGPT, pero entrenada específicamente para clínicas médicas',
+      description: 'La misma tecnología que usa ChatGPT, pero entrenada específicamente para tu negocio',
       proof: 'Procesamiento de lenguaje natural avanzado',
       color: 'from-blue-500 to-cyan-500'
     },
@@ -46,7 +46,7 @@ const ProofOfConcept = () => {
             No es magia, es tecnología real
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            <span className="text-blue-400 font-bold">TECNOLOGÍA EMPRESARIAL</span> que ya usan las mejores empresas del mundo, adaptada específicamente para clínicas médicas
+            <span className="text-blue-400 font-bold">TECNOLOGÍA EMPRESARIAL</span> que ya usan las mejores empresas del mundo, adaptada para cualquier sector
           </p>
         </div>
 

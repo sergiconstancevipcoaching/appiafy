@@ -7,23 +7,23 @@ const FAQ = () => {
   const faqs = [
     {
       question: '¿Cómo funciona exactamente la IA de IAFY?',
-      answer: 'Nuestra IA utiliza procesamiento de lenguaje natural avanzado entrenado específicamente para el sector médico. Se integra con WhatsApp, llamadas telefónicas y tu sistema de gestión para responder consultas, agendar citas y cualificar pacientes automáticamente, manteniendo el tono y estilo de tu clínica.'
+      answer: 'Nuestra IA utiliza procesamiento de lenguaje natural avanzado entrenado específicamente para tu sector. Se integra con WhatsApp, llamadas telefónicas y tu sistema de gestión para responder consultas, agendar citas y cualificar clientes automáticamente, manteniendo el tono y estilo de tu empresa.'
     },
     {
       question: '¿Cuánto tiempo tarda la implementación?',
-      answer: 'La implementación completa toma entre 7-14 días. Incluye: configuración inicial (2-3 días), entrenamiento de la IA con tu información (3-5 días), pruebas y ajustes (2-3 días), y capacitación de tu equipo (1-2 días). Durante este tiempo, tu clínica sigue operando normalmente.'
+      answer: 'La implementación completa toma entre 7-14 días. Incluye: configuración inicial (2-3 días), entrenamiento de la IA con tu información (3-5 días), pruebas y ajustes (2-3 días), y capacitación de tu equipo (1-2 días). Durante este tiempo, tu empresa sigue operando normalmente.'
     },
     {
-      question: '¿La IA puede manejar consultas médicas complejas?',
-      answer: 'La IA está diseñada para manejar consultas administrativas, agendamiento y preguntas frecuentes. Para consultas médicas complejas, transfiere automáticamente al personal médico apropiado. Nunca da consejos médicos, solo facilita la comunicación y gestión administrativa.'
+      question: '¿La IA puede manejar consultas complejas?',
+      answer: 'La IA está diseñada para manejar consultas administrativas, agendamiento y preguntas frecuentes. Para consultas complejas, transfiere automáticamente al personal apropiado. Solo facilita la comunicación y gestión administrativa.'
     },
     {
-      question: '¿Qué pasa si un paciente quiere hablar con una persona real?',
-      answer: 'La IA puede transferir instantáneamente a un miembro de tu equipo cuando el paciente lo solicite o cuando detecte que la consulta requiere atención humana. También puedes configurar horarios específicos para transferencias automáticas.'
+      question: '¿Qué pasa si un cliente quiere hablar con una persona real?',
+      answer: 'La IA puede transferir instantáneamente a un miembro de tu equipo cuando el cliente lo solicite o cuando detecte que la consulta requiere atención humana. También puedes configurar horarios específicos para transferencias automáticas.'
     },
     {
-      question: '¿Es seguro y cumple con la normativa médica?',
-      answer: 'Sí, cumplimos con GDPR, LOPD y normativas médicas españolas. Todos los datos están encriptados, almacenados en servidores europeos certificados, y nunca compartimos información de pacientes. Tenemos certificaciones ISO 27001 y SOC 2.'
+      question: '¿Es seguro y cumple con la normativa?',
+      answer: 'Sí, cumplimos con GDPR, LOPD y normativas españolas. Todos los datos están encriptados, almacenados en servidores europeos certificados, y nunca compartimos información de clientes. Tenemos certificaciones ISO 27001 y SOC 2.'
     },
     {
       question: '¿Puedo cancelar el servicio en cualquier momento?',
@@ -31,7 +31,7 @@ const FAQ = () => {
     },
     {
       question: '¿Funciona con mi sistema actual de gestión?',
-      answer: 'IAFY se integra con los principales sistemas de gestión médica como Clinic Cloud, Doctoralia, Medigest, y muchos otros. Si usas un sistema específico, nuestro equipo técnico evaluará la integración durante la demo personalizada.'
+      answer: 'IAFY se integra con los principales sistemas de gestión empresarial y CRMs. Si usas un sistema específico, nuestro equipo técnico evaluará la integración durante la demo personalizada.'
     },
     {
       question: '¿Qué soporte técnico incluye?',
@@ -115,7 +115,7 @@ const FAQ = () => {
                 Agenda una demo personalizada
               </a>
               <a
-                href="https://wa.me/34621482256?text=Hola%2C%20tengo%20una%20cl%C3%ADnica%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20IAFY%20y%20la%20automatizaci%C3%B3n%20con%20IA."
+                href="https://wa.me/34621482256?text=Hola%2C%20tengo%20una%20empresa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20IAFY%20y%20la%20automatizaci%C3%B3n%20con%20IA."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 text-blue-400 border border-blue-400/50 hover:bg-blue-400/10 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"

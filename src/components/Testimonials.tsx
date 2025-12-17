@@ -22,7 +22,7 @@ const Testimonials = () => {
           <div className="relative max-w-5xl mx-auto mb-16">
             <Quote className="absolute -top-8 -left-8 w-16 h-16 text-blue-500/20" />
             <blockquote className="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 leading-tight">
-              "Más de 20 clínicas privadas ya confían en IAFY para automatizar su atención al paciente con IA y recuperar ingresos perdidos."
+              "Más de 20 empresas ya confían en IAFY para automatizar su atención al cliente con IA y recuperar ingresos perdidos."
             </blockquote>
             <Quote className="absolute -bottom-8 -right-8 w-16 h-16 text-purple-500/20 rotate-180" />
           </div>
@@ -35,7 +35,7 @@ const Testimonials = () => {
                 <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">
                   +20
                 </div>
-                <div className="text-gray-300 font-semibold text-lg">Clínicas Activas</div>
+                <div className="text-gray-300 font-semibold text-lg">Empresas Activas</div>
                 <div className="text-gray-400 text-sm mt-2">Confiando en nuestra IA</div>
               </div>
             </div>
