@@ -76,10 +76,10 @@ const ROICalculator = () => {
                       onChange={(e) => setCustomers(Number(e.target.value))}
                       className="w-full slider"
                     />
-                    <div className="flex justify-between text-neutral-400 text-sm sm:text-lg mt-4">
-                      <span>50</span>
-                      <span className="text-primary-400 font-bold text-xl sm:text-2xl">{customers}</span>
-                      <span>500</span>
+                    <div className="grid grid-cols-3 gap-2 text-neutral-400 text-sm sm:text-lg mt-4 w-full">
+                      <span className="text-left">50</span>
+                      <span className="text-primary-400 font-bold text-xl sm:text-2xl text-center">{customers}</span>
+                      <span className="text-right">500</span>
                     </div>
                   </div>
 
@@ -96,13 +96,13 @@ const ROICalculator = () => {
                       onChange={(e) => setAvgValue(Number(e.target.value))}
                       className="w-full slider"
                     />
-                    <div className="flex justify-between text-neutral-400 text-sm sm:text-lg mt-4">
-                      <span>50€</span>
-                      <span className="text-primary-400 font-bold text-xl sm:text-2xl flex items-center">
+                    <div className="grid grid-cols-3 gap-2 text-neutral-400 text-sm sm:text-lg mt-4 w-full">
+                      <span className="text-left">50€</span>
+                      <span className="text-primary-400 font-bold text-xl sm:text-2xl flex items-center justify-center">
                         {avgValue}
                         <Euro className="w-5 sm:w-6 h-5 sm:h-6 ml-1" />
                       </span>
-                      <span>500€</span>
+                      <span className="text-right">500€</span>
                     </div>
                   </div>
 
@@ -119,10 +119,10 @@ const ROICalculator = () => {
                       onChange={(e) => setLostCalls(Number(e.target.value))}
                       className="w-full slider"
                     />
-                    <div className="flex justify-between text-neutral-400 text-sm sm:text-lg mt-4">
-                      <span>10%</span>
-                      <span className="text-danger-400 font-bold text-xl sm:text-2xl">{lostCalls}%</span>
-                      <span>60%</span>
+                    <div className="grid grid-cols-3 gap-2 text-neutral-400 text-sm sm:text-lg mt-4 w-full">
+                      <span className="text-left">10%</span>
+                      <span className="text-danger-400 font-bold text-xl sm:text-2xl text-center">{lostCalls}%</span>
+                      <span className="text-right">60%</span>
                     </div>
                   </div>
 
@@ -140,13 +140,13 @@ const ROICalculator = () => {
                       onChange={(e) => setStaffCost(Number(e.target.value))}
                       className="w-full slider"
                     />
-                    <div className="flex justify-between text-neutral-400 text-sm sm:text-lg mt-4">
-                      <span>1.000€</span>
-                      <span className="text-primary-400 font-bold text-xl sm:text-2xl flex items-center">
+                    <div className="grid grid-cols-3 gap-2 text-neutral-400 text-sm sm:text-lg mt-4 w-full">
+                      <span className="text-left">1.000€</span>
+                      <span className="text-primary-400 font-bold text-xl sm:text-2xl flex items-center justify-center">
                         {staffCost}
                         <Euro className="w-5 sm:w-6 h-5 sm:h-6 ml-1" />
                       </span>
-                      <span>5.000€</span>
+                      <span className="text-right">5.000€</span>
                     </div>
                   </div>
                 </div>
