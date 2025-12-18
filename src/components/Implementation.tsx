@@ -77,23 +77,23 @@ const Implementation = () => {
                 <div className="absolute left-8 top-20 w-0.5 h-24 bg-gradient-to-b from-purple-500 to-blue-500 opacity-30"></div>
               )}
               
-              <div className="flex items-start space-x-8">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-8">
                 {/* Icon */}
                 <div className={`bg-gradient-to-r ${step.color} w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <step.icon className="w-8 h-8 text-white" />
                 </div>
-                
+
                 {/* Content */}
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <div className={`absolute -inset-2 bg-gradient-to-r ${step.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                   
-                  <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-center justify-between mb-6">
+                  <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 space-y-4 sm:space-y-0">
                       <div>
                         <div className={`text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r ${step.color} mb-2`}>
                           {step.day}
                         </div>
-                        <h3 className="text-2xl font-bold text-white">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           {step.title}
                         </h3>
                       </div>
@@ -108,10 +108,10 @@ const Implementation = () => {
                       {step.description}
                     </p>
                     
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
                       {step.tasks.map((task, taskIndex) => (
-                        <div key={taskIndex} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        <div key={taskIndex} className="flex items-start space-x-2">
+                          <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-300 text-sm">{task}</span>
                         </div>
                       ))}
@@ -124,16 +124,16 @@ const Implementation = () => {
         </div>
 
         {/* Guarantee Section */}
-        <div className="bg-gradient-to-br from-green-900/50 to-gray-900/50 backdrop-blur-sm rounded-3xl border border-green-500/30 p-12 text-center">
+        <div className="bg-gradient-to-br from-green-900/50 to-gray-900/50 backdrop-blur-sm rounded-3xl border border-green-500/30 p-6 sm:p-12 text-center">
           <Clock className="w-16 h-16 text-green-400 mx-auto mb-6" />
-          <h3 className="text-3xl font-bold text-white mb-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             GARANTÍA DE IMPLEMENTACIÓN
           </h3>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-lg sm:text-xl text-gray-300 mb-8">
             Si no tienes tu IA funcionando en 7 días, <span className="text-green-400 font-bold">trabajamos gratis hasta que esté lista</span>
           </p>
-          
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-gray-800/50 p-6 rounded-xl">
               <Users className="w-8 h-8 text-blue-400 mx-auto mb-3" />
               <div className="text-lg font-bold text-white mb-1">Equipo Dedicado</div>
